@@ -6,6 +6,7 @@ import java.io.IOException;
 
 public class MainController {
 
+    /*
     @FXML
     private void goToPage1() throws IOException {
             MainApp.switchScene("page1.fxml");
@@ -25,4 +26,6 @@ public class MainController {
     private void goToPage4() throws IOException {
         MainApp.switchScene("page4.fxml");
     }
+
+     */
 }

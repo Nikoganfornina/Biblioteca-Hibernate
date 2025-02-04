@@ -1,3 +1,29 @@
 .anchor-pane {
-    -fx-background-color: #ADD8E6;
+    -fx-background-color: #F1F1F1;
+}
+#.button {
+    -fx-background-color: #1E90FF;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 12px;
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.2), 3, 0, 0, 1);
+}
+
+.button:hover {
+    -fx-background-color: #87CEEB;
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.2), 3, 0, 0, 1);
+}
+
+#titulo {
+    -fx-font-size: 54px;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-fill: #1E90FF;
+    -fx-alignment: center;
+}
+#subtitulo {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-alignment: center;
 }
