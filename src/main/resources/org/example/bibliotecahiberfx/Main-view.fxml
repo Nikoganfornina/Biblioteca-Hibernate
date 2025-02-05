@@ -3,26 +3,31 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="anchor-pane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.bibliotecahiberfx.MainController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" styleClass="anchor-pane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.bibliotecahiberfx.MainController">
 
-    <VBox alignment="CENTER" spacing="10" />
 
-    <HBox alignment="CENTER" layoutY="200.0" prefHeight="100.0" prefWidth="600.0" spacing="20">
+    <HBox alignment="CENTER" layoutX="150.0" layoutY="400.0" prefHeight="100.0" prefWidth="600.0" spacing="20" style="-fx-border-color: black; -fx-border-width: 2px;">
         <padding>
-            <Insets left="30" right="30" top="0" />
+            <Insets left="30" right="30" />
         </padding>
 
-        <Button onAction="#goToPage1" prefHeight="80" prefWidth="180" text="Gestion Libros" />
-        <Button onAction="#goToPage2" prefHeight="80" prefWidth="180" text="Gestion Autores" />
-        <Button onAction="#goToPage3" prefHeight="80" prefWidth="180" text="Gestion Socios" />
-        <Button onAction="#goToPage4" prefHeight="80" prefWidth="180" text="Prestamos" />
+        <Button prefHeight="80" prefWidth="180" styleClass="button" text="Gestion Libros" />
+        <Button prefHeight="80" prefWidth="180" styleClass="button" text="Gestion Autores" />
+        <Button prefHeight="80" prefWidth="180" styleClass="button" text="Gestion Socios" />
+        <Button prefHeight="80" prefWidth="180" styleClass="button" text="Prestamos" />
 
     </HBox>
-    <Label fx:id="titulo" layoutX="136.0" layoutY="50.0" text="Biblioteca FX" />
-    <Label fx:id="subtitulo" layoutX="73.0" layoutY="128.0" text="Aplicativo de gestion de la Biblioteca de Niko , una biblioteca virtual , elija una opcion" />
 
+    <Label fx:id="titulo" prefWidth="350.0"  layoutX="275.0" layoutY="45.0" text="Biblioteca FX"  style="-fx-border-color: black; -fx-border-width: 2px;" />
 
-    <Button layoutX="502.0" layoutY="342.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="84.0" style="-fx-background-color: red; -fx-text-fill: white;" text="Salir" />
+    <TextFlow layoutX="210.0" layoutY="130.0" prefHeight="54.0" prefWidth="184.0" textAlignment="CENTER" style="-fx-border-color: black; -fx-border-width: 2px;" >
+        <Text text="Aplicativo de gestión de la Biblioteca de Niko" wrappingWidth="239.8359375" />
+        <Text text="Una biblioteca virtual" />
+        <Text text="Elija una opción" />
+    </TextFlow>
+
+    <Button layoutX="764.0" layoutY="512.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="70.0" styleClass="button1" text="Salir" />
 
 </AnchorPane>

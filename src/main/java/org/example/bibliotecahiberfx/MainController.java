@@ -6,26 +6,26 @@ import java.io.IOException;
 
 public class MainController {
 
-    /*
+
     @FXML
-    private void goToPage1() throws IOException {
-            MainApp.switchScene("page1.fxml");
+    private void goToLibros() throws Exception {
+            MainApp.switchScene("GestionLibros-view.fxml");
     }
 
     @FXML
-    private void goToPage2() throws IOException {
-        MainApp.switchScene("page2.fxml");
+    private void goToAutores() throws Exception {
+        MainApp.switchScene("GestionAutores-view.fxml");
     }
 
     @FXML
-    private void goToPage3() throws IOException {
-        MainApp.switchScene("page3.fxml");
+    private void goToSocios() throws Exception {
+        MainApp.switchScene("GestionSocios-view.fxml");
     }
 
     @FXML
-    private void goToPage4() throws IOException {
-        MainApp.switchScene("page4.fxml");
+    private void goToPrestamos() throws Exception {
+        MainApp.switchScene("Prestamos-view.fxml");
     }
 
-     */
+
 }

@@ -1,8 +1,15 @@
 .anchor-pane {
     -fx-background-color: #F1F1F1;
 }
-#.button {
+.button {
     -fx-background-color: #1E90FF;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 12px;
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.2), 3, 0, 0, 1);
+}
+.button1 {
+    -fx-background-color: red ;
     -fx-text-fill: white;
     -fx-font-size: 14px;
     -fx-background-radius: 12px;
@@ -13,6 +20,10 @@
     -fx-background-color: #87CEEB;
     -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.2), 3, 0, 0, 1);
 }
+.button1:hover {
+    -fx-background-color: #FF4500;
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);
+}
 
 #titulo {
     -fx-font-size: 54px;
@@ -22,7 +33,7 @@
     -fx-alignment: center;
 }
 #subtitulo {
-    -fx-font-size: 24px;
+    -fx-font-size: 18px;
     -fx-font-weight: bold;
     -fx-fill: white;
     -fx-alignment: center;
