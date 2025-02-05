@@ -20,12 +20,12 @@
 
     </HBox>
 
-    <Label fx:id="titulo" prefWidth="350.0"  layoutX="275.0" layoutY="45.0" text="Biblioteca FX"  style="-fx-border-color: black; -fx-border-width: 2px;" />
+    <Label fx:id="titulo" layoutX="275.0" layoutY="45.0" prefWidth="350.0" style="-fx-border-color: black; -fx-border-width: 2px;" text="Biblioteca FX" />
 
-    <TextFlow layoutX="210.0" layoutY="130.0" prefHeight="54.0" prefWidth="184.0" textAlignment="CENTER" style="-fx-border-color: black; -fx-border-width: 2px;" >
+    <TextFlow fx:id="subtitulo" layoutX="279.0" layoutY="163.0" prefHeight="138.0" prefWidth="350.0" textAlignment="CENTER">
         <Text text="Aplicativo de gestión de la Biblioteca de Niko" wrappingWidth="239.8359375" />
-        <Text text="Una biblioteca virtual" />
-        <Text text="Elija una opción" />
+        <Text text="  Una biblioteca virtual" />
+        <Text text="  Elija una opción" />
     </TextFlow>
 
     <Button layoutX="764.0" layoutY="512.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="70.0" styleClass="button1" text="Salir" />
