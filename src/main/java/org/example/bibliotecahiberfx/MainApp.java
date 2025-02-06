@@ -20,7 +20,6 @@ public class MainApp extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-
     }
     public static void switchScene(String fxml) throws Exception {
         FXMLLoader fXMLLoader = new FXMLLoader(MainApp.class.getResource(fxml));

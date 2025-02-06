@@ -8,7 +8,7 @@
 <AnchorPane prefHeight="600.0" prefWidth="900.0" styleClass="anchor-pane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.bibliotecahiberfx.MainController">
 
 
-    <HBox alignment="CENTER" layoutX="150.0" layoutY="400.0" prefHeight="100.0" prefWidth="600.0" spacing="20" style="-fx-border-color: black; -fx-border-width: 2px;">
+    <HBox alignment="CENTER" layoutX="150.0" layoutY="400.0" prefHeight="100.0" prefWidth="600.0" spacing="20">
         <padding>
             <Insets left="30" right="30" />
         </padding>
@@ -20,13 +20,13 @@
 
     </HBox>
 
-    <Label fx:id="titulo" layoutX="275.0" layoutY="45.0" prefWidth="350.0" style="-fx-border-color: black; -fx-border-width: 2px;" text="Biblioteca FX" />
+    <Label fx:id="titulo" layoutX="275.0" layoutY="45.0" prefWidth="350.0"  text="Biblioteca FX" />
 
-    <TextFlow fx:id="subtitulo" layoutX="279.0" layoutY="163.0" prefHeight="138.0" prefWidth="350.0" textAlignment="CENTER">
-        <Text text="Aplicativo de gestión de la Biblioteca de Niko" wrappingWidth="239.8359375" />
-        <Text text="  Una biblioteca virtual" />
-        <Text text="  Elija una opción" />
-    </TextFlow>
+    <VBox  fx:id="subtitulo" layoutY="200.0" prefWidth="900.0" spacing="10" alignment="CENTER">
+        <Text text="Aplicativo de gestión de la Biblioteca de Niko" />
+        <Text text="Una biblioteca virtual" />
+        <Text text="Elija una opción" />
+    </VBox>
 
     <Button layoutX="764.0" layoutY="512.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="70.0" styleClass="button1" text="Salir" />
 
