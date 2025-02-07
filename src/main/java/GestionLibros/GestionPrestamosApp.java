@@ -1,4 +1,4 @@
-package org.example.bibliotecahiberfx;
+package GestionLibros;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

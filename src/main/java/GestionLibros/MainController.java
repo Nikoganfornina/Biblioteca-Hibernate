@@ -1,14 +1,12 @@
-package org.example.bibliotecahiberfx;
+package GestionLibros;
 
-import com.sun.tools.javac.Main;
 import javafx.fxml.FXML;
-import java.io.IOException;
 
 public class MainController {
 
 
     @FXML
-    private void goToLibros() throws Exception {
+    public void goToLibros() throws Exception {
             MainApp.switchScene("GestionLibros-view.fxml");
     }
 
