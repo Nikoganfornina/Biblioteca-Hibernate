@@ -11,7 +11,7 @@ public interface Ilibro {
 
     List<Libro> findByTitulo(String titulo);
 
-    List<Libro> findByAutor(String titulo);
+    List<Libro> findByAutor(Integer autor);
 
     List<Libro> findByISBN(Integer isbn);
 

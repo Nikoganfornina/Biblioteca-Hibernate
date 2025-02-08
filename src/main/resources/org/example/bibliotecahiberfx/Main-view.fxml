@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" styleClass="anchor-pane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GestionLibros.MainController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" styleClass="anchor-pane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GestionLibros.Controladores.MainController">
 
 
     <HBox alignment="CENTER" layoutX="150.0" layoutY="400.0" prefHeight="100.0" prefWidth="600.0" spacing="20">
@@ -14,7 +14,7 @@
         </padding>
 
         <Button prefHeight="80" prefWidth="180" styleClass="button" onAction="#goToLibros" text="Gestion Libros" />
-        <Button prefHeight="80" prefWidth="180" styleClass="button" text="Gestion Autores" />
+        <Button prefHeight="80" prefWidth="180" styleClass="button"  onAction="#goToAutores" text="Gestion Autores" />
         <Button prefHeight="80" prefWidth="180" styleClass="button" text="Gestion Socios" />
         <Button prefHeight="80" prefWidth="180" styleClass="button" text="Prestamos" />
 
@@ -28,6 +28,6 @@
         <Text text="Elija una opción" />
     </VBox>
 
-    <Button   layoutX="764.0" layoutY="512.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="70.0" styleClass="button1" text="Salir" />
+    <Button onAction="#salir"  layoutX="764.0" layoutY="512.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="70.0" styleClass="button1" text="Salir" />
 
 </AnchorPane>

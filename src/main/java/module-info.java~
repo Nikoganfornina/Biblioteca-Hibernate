@@ -12,6 +12,4 @@ module org.example.bibliotecafx {
 
         exports GestionLibros;
         exports entities;
-        exports GestionLibros.Controladores;
-        opens GestionLibros.Controladores to javafx.fxml;
 }

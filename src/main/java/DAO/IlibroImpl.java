@@ -1,28 +1,53 @@
 package DAO;
 
+import Util.HibernateUtil;
 import entities.Libro;
+import org.hibernate.Session;
 
 import java.util.List;
 
 public class IlibroImpl implements Ilibro {
     @Override
     public List<Libro> findAll() {
-        return List.of();
+        //Abrir Sesion
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        List<Libro> libros = session.createQuery("from Libro").list();
+        session.close();
+        return libros;
     }
 
     @Override
     public List<Libro> findByTitulo(String titulo) {
-        return List.of();
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Libro> libros = session.createQuery( "from Libro where titulo like :titulo" , Libro.class)
+                .setParameter("titulo", "%"+ titulo + "%")
+                .list();
+        session.close();
+        return libros;
     }
 
     @Override
-    public List<Libro> findByAutor(String titulo) {
-        return List.of();
+    public List<Libro> findByAutor(Integer Id_Autor) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Libro> Autores = session.createQuery( "from Libro where Id_Autor like :titulo " , Libro.class)
+                .setParameter("Id_Autor", "%"+ Id_Autor + "%")
+                .list();
+        session.close();
+        return Autores;
     }
 
     @Override
     public List<Libro> findByISBN(Integer isbn) {
-        return List.of();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Libro> ISBN = session.createQuery( "from Libro where Id_Autor like :titulo " , Libro.class)
+                .setParameter("Id_Autor", "%"+ isbn + "%")
+                .list();
+        session.close();
+        return ISBN;
+
+
     }
 
     @Override
