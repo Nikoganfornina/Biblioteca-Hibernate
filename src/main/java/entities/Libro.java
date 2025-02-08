@@ -19,7 +19,7 @@ public class Libro implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "Id_Autor")
-    private Integer Id_Autor;
+    private Autor autor;  // Cambiar de Integer a Autor
 
     private String editorial;
     private Integer fechapublicacion;
@@ -28,11 +28,11 @@ public class Libro implements Serializable {
     public Libro() {
     }
 
-    public Libro(Integer id, String titulo, Integer isbn, Integer autor, String editorial, Integer fechapublicacion) {
+    public Libro(Integer id, String titulo, Integer isbn, Autor autor, String editorial, Integer fechapublicacion) {
         this.id = id;
         this.titulo = titulo;
         Isbn = isbn;
-        this.Id_Autor = autor;
+        this.autor = autor;
         this.editorial = editorial;
         this.fechapublicacion = fechapublicacion;
     }
@@ -63,12 +63,12 @@ public class Libro implements Serializable {
     }
 
 
-    public Integer getAutor() {
-        return Id_Autor;
+    public Autor getAutor() {
+        return autor;
     }
 
-    public void setAutor(Integer autor) {
-        this.Id_Autor = autor;
+    public void setAutor(Autor autor) {
+        this.autor = autor;
     }
 
 
@@ -93,7 +93,7 @@ public class Libro implements Serializable {
         return "Libro{" +
                 "titulo='" + titulo + '\'' +
                 ", ISBN=" + Isbn +
-                ", autor='" + Id_Autor + '\'' +
+                ", autor='" + autor + '\'' +
                 ", editorial='" + editorial + '\'' +
                 ", fechapublicacion=" + fechapublicacion +
                 '}';

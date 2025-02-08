@@ -9,8 +9,7 @@ public interface IAutor {
 
     List<Autor> findAll();
 
-    List<Autor> findByTitulo(String Nombre);
-
+    List<Autor> findByNombre(String Nombre);
 
     Autor save(Autor Autor);
 

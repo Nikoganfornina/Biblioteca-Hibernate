@@ -19,6 +19,7 @@
         <!-- Clases que se van a mapear -->
 
         <mapping class="org.example.entities.Libro"/>
+        <mapping class="org.example.entities.Autor"/>
 
 
     </session-factory>
