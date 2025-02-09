@@ -24,8 +24,9 @@ public class GestionAutoresController {
     @FXML
     private Label lblMensaje;
     @FXML
+
     private TableView<Autor> tablaAutores;
-    @FXML
+     @FXML
     private TableColumn<Autor, String> colNombre, colNacionalidad;
     @FXML
     private ListView<Autor> listAutoresEliminar, listAutoresModificar, listResultados;
@@ -104,24 +105,11 @@ public class GestionAutoresController {
     }
     @FXML
     public void buscarAutor() {
-        String termino = txtBuscar.getText().trim();
-
-        if (termino.isEmpty()) {
-            mostrarAlerta("Error", "Ingrese un nombre para buscar.", Alert.AlertType.ERROR);
-            return;
-        }
-
+        String busqueda = txtBuscar.getText();
         IAutorImpl autorDao = new IAutorImpl();
-        List<Autor> resultados = autorDao.findByNombre(termino);
-
-        if (resultados.isEmpty()) {
-            mostrarAlerta("Información", "No se encontraron autores con ese nombre.", Alert.AlertType.INFORMATION);
-        }
-
-        // Usamos la misma lista observable que en eliminar
-        ObservableList<Autor> listaAutores = FXCollections.observableArrayList(resultados);
-        listResultados.getItems().clear();
-        listResultados.getItems().addAll(listaAutores);
+        List<Autor> autoresEncontrados = autorDao.findByNombre(busqueda);
+        ObservableList<Autor> autores = FXCollections.observableArrayList(autoresEncontrados);
+        listResultados.setItems(autores);
     }
 
 

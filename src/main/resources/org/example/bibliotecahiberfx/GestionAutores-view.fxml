@@ -75,7 +75,7 @@
                                 <Label layoutX="180.0" layoutY="103.0" text="Nombre" />
                                 <TextField fx:id="txtBuscar" layoutX="240.0" layoutY="99.0" prefWidth="220.0" />
 
-                                <Button fx:id="btnBuscar" layoutX="514.0" layoutY="97.0" mnemonicParsing="false" text="Buscar" />
+                                <Button onAction="#buscarAutor" fx:id="btnBuscar" layoutX="514.0" layoutY="97.0" mnemonicParsing="false" text="Buscar" />
 
                                 <ListView fx:id="listResultados" layoutX="180.0" layoutY="139.0" prefHeight="220.0" prefWidth="400.0" />
                             </children>
