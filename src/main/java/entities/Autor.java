@@ -1,58 +1,56 @@
 package entities;
 
 import jakarta.persistence.*;
-
-import java.io.Serial;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "Autor")
 public class Autor implements Serializable {
 
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String Nombre;
-    private String Nacionalidad;
+    @Column(name = "nombre")
+    private String nombre;
+
+    @Column(name = "nacionalidad")
+    private String nacionalidad;
 
     public Autor() {
     }
-    public Autor(Integer id, String nombre, String nacionalidad) {
-        this.id = id;
-        Nombre = nombre;
-        Nacionalidad = nacionalidad;
+
+    public Autor(String nombre, String nacionalidad) {
+        this.nombre = nombre;
+        this.nacionalidad = nacionalidad;
     }
+
     public Integer getId() {
         return id;
     }
-    public void setId(Integer id) {
-        this.id = id;
-    }
+
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
+
     public void setNombre(String nombre) {
-        Nombre = nombre;
+        this.nombre = nombre;
     }
+
     public String getNacionalidad() {
-        return Nacionalidad;
+        return nacionalidad;
     }
+
     public void setNacionalidad(String nacionalidad) {
-        Nacionalidad = nacionalidad;
+        this.nacionalidad = nacionalidad;
     }
 
     @Override
     public String toString() {
         return "Autor{" +
                 "id=" + id +
-                ", Nombre='" + Nombre + '\'' +
-                ", Nacionalidad='" + Nacionalidad + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", nacionalidad='" + nacionalidad + '\'' +
                 '}';
     }
-
-
-
 }

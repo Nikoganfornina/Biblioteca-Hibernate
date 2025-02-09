@@ -87,12 +87,19 @@
                             <children>
                                 <Label layoutX="374.0" layoutY="92.0" text="Autores" />
 
-                                <ListView fx:id="Vertodo" layoutX="295.0" layoutY="141.0" prefHeight="200.0" prefWidth="200.0" />
+                                <!-- Aquí está la tabla -->
+                                <TableView fx:id="tablaAutores" layoutX="50.0" layoutY="141.0" prefHeight="200.0" prefWidth="400.0">
+                                    <columns>
+                                        <TableColumn fx:id="colNombre" text="Nombre" prefWidth="200.0" />
+                                        <TableColumn fx:id="colAutor" text="Autor" prefWidth="200.0" />
+                                    </columns>
+                                </TableView>
 
                             </children>
                         </AnchorPane>
                     </content>
                 </Tab>
+
             </tabs>
         </TabPane>
     </children>
