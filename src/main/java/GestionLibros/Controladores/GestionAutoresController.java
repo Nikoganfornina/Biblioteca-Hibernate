@@ -6,39 +6,37 @@ import entities.Autor;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.util.Duration;
+import javafx.scene.control.Alert.AlertType;
 
 import java.util.List;
 
 public class GestionAutoresController {
 
     @FXML
-    private TextField txtNombre;
+    private TextField txtNombre, txtNacionalidad, txtNombreMod, txtNacionalidadMod, txtBuscar;
     @FXML
-    private TextField txtNacionalidad;
+    private Button btnGuardar, btnGuardarMod, btnBuscar;
     @FXML
-    private Button btnGuardar;
-    @FXML
-    private Label lblMensaje;  // Label para mostrar el mensaje de éxito
-
+    private Label lblMensaje;
     @FXML
     private TableView<Autor> tablaAutores;
     @FXML
-    private TableColumn<Autor, String> colNombre;
+    private TableColumn<Autor, String> colNombre, colNacionalidad;
     @FXML
-    private TableColumn<Autor, String> colNacionalidad;
+    private ListView<Autor> listAutoresEliminar, listAutoresModificar, listResultados;
+
+    private Autor autorSeleccionado;
 
     @FXML
     private void volver() throws Exception {
-        long inicio = System.nanoTime();
         MainApp.switchScene("/org/example/bibliotecahiberfx/Main-view.fxml");
-        long tiempo = (System.nanoTime() - inicio) / 1_000_000;
-        System.out.println("\u001B[32mYendo a la pantalla principal... \u001B[36m" + tiempo + " ms\u001B[0m");
     }
 
-    // Método para guardar un autor
     @FXML
     public void guardarAutor() {
         String nombre = txtNombre.getText();
@@ -47,49 +45,120 @@ public class GestionAutoresController {
         Autor autor = new Autor();
         autor.setNombre(nombre);
         autor.setNacionalidad(nacionalidad);
-        long inicio = System.nanoTime();
 
         IAutorImpl autorDao = new IAutorImpl();
         autorDao.save(autor);
-        long tiempo = (System.nanoTime() - inicio) / 1_000_000;
-        System.out.println("\u001B[32mAutor : " + autor + " guardado \u001B[36m" + tiempo + " ms\u001B[0m");
 
-        txtNombre.clear();  // Limpiar el campo de texto Nombre
-        txtNacionalidad.clear();  // Limpiar el campo de texto Nacionalidad
-
-        lblMensaje.setText("Autor añadido con éxito");  // Mostrar el mensaje de éxito
-
-        // Crear un Timeline para hacer desaparecer el mensaje después de 3 segundos
-        Timeline timeline = new Timeline(new KeyFrame(
-                Duration.seconds(3),
-                event -> lblMensaje.setText("")  // Limpiar el texto del mensaje después de 3 segundos
-        ));
-        timeline.play();  // Reproducir la animación
-
-        // Actualizar la tabla después de guardar el autor
-        actualizarTabla();
+        txtNombre.clear();
+        txtNacionalidad.clear();
+        lblMensaje.setText("Autor añadido con éxito");
+        lblMensaje.setStyle("-fx-text-fill: green;");
+        ocultarMensajeDespuesDeTiempo();
+        actualizarListaAutores();
     }
 
-    // Método para actualizar la tabla con los autores
-    public void actualizarTabla() {
-        IAutorImpl autorDao = new IAutorImpl();
-        List<Autor> autores = autorDao.findAll(); // Obtener todos los autores desde la base de datos
+    @FXML
+    public void seleccionarAutorModificar() {
+        autorSeleccionado = listAutoresModificar.getSelectionModel().getSelectedItem();
+        if (autorSeleccionado != null) {
+            txtNombreMod.setText(autorSeleccionado.getNombre());
+            txtNacionalidadMod.setText(autorSeleccionado.getNacionalidad());
+        }
+    }
+    @FXML
+    public void modificarAutor() {
+        System.out.println("Botón presionado: modificarAutor() ejecutado");
 
-        // Limpiar la tabla
+        if (autorSeleccionado == null) {
+            mostrarAlerta("Error", "Debe seleccionar un autor", AlertType.ERROR);
+            System.out.println("Error: No hay autor seleccionado");
+            return;
+        }
+
+        Alert confirmacion = new Alert(AlertType.CONFIRMATION, "¿Seguro que quieres modificar este autor?", ButtonType.YES, ButtonType.NO);
+        confirmacion.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.YES) {
+                System.out.println("Confirmación recibida, modificando autor...");
+
+                // Actualizamos los datos del autor seleccionado
+                autorSeleccionado.setNombre(txtNombreMod.getText());
+                autorSeleccionado.setNacionalidad(txtNacionalidadMod.getText());
+
+                System.out.println("Nuevos valores - Nombre: " + autorSeleccionado.getNombre() + ", Nacionalidad: " + autorSeleccionado.getNacionalidad());
+
+                // Llamamos al método update de IAutorImpl
+                IAutorImpl autorDao = new IAutorImpl();
+                Autor actualizado = autorDao.update(autorSeleccionado);
+
+                if (actualizado != null) {
+                    lblMensaje.setText("Autor modificado con éxito");
+                    lblMensaje.setStyle("-fx-text-fill: blue;");
+                    System.out.println("Autor actualizado correctamente");
+                    actualizarListaAutores(); // Refresca la lista de autores
+                } else {
+                    mostrarAlerta("Error", "No se pudo modificar el autor.", AlertType.ERROR);
+                    System.out.println("Error: La actualización falló");
+                }
+            }
+        });
+    }
+    @FXML
+    public void buscarAutor() {
+        String termino = txtBuscar.getText().trim();
+
+        if (termino.isEmpty()) {
+            mostrarAlerta("Error", "Ingrese un nombre para buscar.", Alert.AlertType.ERROR);
+            return;
+        }
+
+        IAutorImpl autorDao = new IAutorImpl();
+        List<Autor> resultados = autorDao.findByNombre(termino);
+
+        if (resultados.isEmpty()) {
+            mostrarAlerta("Información", "No se encontraron autores con ese nombre.", Alert.AlertType.INFORMATION);
+        }
+
+        // Usamos la misma lista observable que en eliminar
+        ObservableList<Autor> listaAutores = FXCollections.observableArrayList(resultados);
+        listResultados.getItems().clear();
+        listResultados.getItems().addAll(listaAutores);
+    }
+
+
+
+    public void actualizarListaAutores() {
+        IAutorImpl autorDao = new IAutorImpl();
+        List<Autor> autores = autorDao.findAll();
+
+        listAutoresEliminar.getItems().clear();
+        listAutoresModificar.getItems().clear();
         tablaAutores.getItems().clear();
 
-        // Llenar la tabla con los autores
+        listAutoresEliminar.getItems().addAll(autores);
+        listAutoresModificar.getItems().addAll(autores);
         tablaAutores.getItems().addAll(autores);
     }
 
-    // Método que se ejecuta cuando se inicializa la vista
+    private void mostrarAlerta(String titulo, String mensaje, AlertType tipo) {
+        Alert alerta = new Alert(tipo);
+        alerta.setTitle(titulo);
+        alerta.setContentText(mensaje);
+        alerta.showAndWait();
+    }
+
+    private void ocultarMensajeDespuesDeTiempo() {
+        Timeline timeline = new Timeline(new KeyFrame(
+                Duration.seconds(3),
+                event -> lblMensaje.setText("")
+        ));
+        timeline.play();
+    }
+
     @FXML
     public void initialize() {
-        // Configurar las columnas de la tabla
         colNombre.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNombre()));
         colNacionalidad.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNacionalidad()));
-
-        // Llamar a actualizarTabla para cargar los autores en la tabla al inicio
-        actualizarTabla();
+        listAutoresModificar.setOnMouseClicked(event -> seleccionarAutorModificar());
+        actualizarListaAutores();
     }
 }

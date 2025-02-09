@@ -26,12 +26,10 @@ public class IAutorImpl implements IAutor {
         return autores;
     }
 
-
-
-    public List<Autor> findByNombre(String Nombre) {
+    public List<Autor> findByNombre(String nombre) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        List<Autor> autores = session.createQuery( "from Autor where nombre like : nombre" , Autor.class)
-                .setParameter("nombre", "%"+ Nombre + "%")
+        List<Autor> autores = session.createQuery("from Autor where nombre like :nombre", Autor.class)
+                .setParameter("nombre", "%" + nombre + "%") // Busca coincidencias parciales
                 .list();
         session.close();
         return autores;
@@ -49,12 +47,34 @@ public class IAutorImpl implements IAutor {
     }
 
     @Override
-    public Autor update(Autor Autor) {
-        return null;
+    public Autor update(Autor autor) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        try {
+            session.update(autor);  // Actualizamos el autor directamente
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            session.getTransaction().rollback(); // Revertimos si hay un error
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return autor;
     }
+
+
 
     @Override
     public boolean delete(Autor Autor) {
-        return false;
+
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(session.get(Autor.class, Autor.getId()));
+            session.getTransaction().commit();
+            session.close();
+            return true;
+        }
     }
-}
+

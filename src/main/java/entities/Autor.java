@@ -47,10 +47,6 @@ public class Autor implements Serializable {
 
     @Override
     public String toString() {
-        return "Autor{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", nacionalidad='" + nacionalidad + '\'' +
-                '}';
+        return nombre + " - " + nacionalidad;
     }
 }

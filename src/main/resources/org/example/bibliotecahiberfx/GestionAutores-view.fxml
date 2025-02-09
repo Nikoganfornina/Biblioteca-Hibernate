@@ -39,7 +39,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="287.0" prefWidth="558.0">
                             <children>
-                                <ListView layoutX="20.0" layoutY="20.0" prefHeight="200.0" prefWidth="200.0" />
+                                <ListView  fx:id="listAutoresModificar" layoutX="20.0" layoutY="20.0" prefHeight="200.0" prefWidth="200.0" />
 
                                 <Label layoutX="297.0" layoutY="78.0" text="Nombre:" />
                                 <TextField fx:id="txtNombreMod" layoutX="420.0" layoutY="74.0" prefWidth="200.0" />
@@ -47,7 +47,7 @@
                                 <Label layoutX="285.0" layoutY="150.0" text="Nacionalidad:" />
                                 <TextField fx:id="txtNacionalidadMod" layoutX="420.0" layoutY="146.0" prefWidth="200.0" />
 
-                                <Button fx:id="btnGuardarMod" layoutX="337.0" layoutY="337.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="114.0" text="Guardar" />
+                                <Button fx:id="btnGuardarMod" onAction="#modificarAutor" layoutX="337.0" layoutY="337.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="114.0" text="Guardar" />
                             </children>
                         </AnchorPane>
                     </content>
