@@ -1,5 +1,6 @@
 package GestionLibros;
 
+import GestionLibros.Controladores.GestionAutoresController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

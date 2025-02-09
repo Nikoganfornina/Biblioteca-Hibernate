@@ -12,7 +12,9 @@ public class MainController {
         MainApp.switchScene("/org/example/bibliotecahiberfx/GestionLibros-view.fxml");
         long tiempo = (System.nanoTime() - inicio) / 1_000_000;
         System.out.println("\u001B[32mYendo a la gestión de libros... \u001B[36m" + tiempo + " ms\u001B[0m");
+
     }
+
 
     @FXML
     private void goToAutores() throws Exception {
