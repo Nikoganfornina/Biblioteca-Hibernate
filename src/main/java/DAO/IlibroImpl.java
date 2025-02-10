@@ -1,6 +1,7 @@
 package DAO;
 
 import Util.HibernateUtil;
+import entities.Autor;
 import entities.Libro;
 import org.hibernate.Session;
 
@@ -12,8 +13,14 @@ public class IlibroImpl implements Ilibro {
         //Abrir Sesion
         Session session = HibernateUtil.getSessionFactory().openSession();
 
+        session.beginTransaction();
         List<Libro> libros = session.createQuery("from Libro").list();
+
+        session.getTransaction().commit();
         session.close();
+
+        System.out.println("Tamaño de la lista de autores: " + libros.size());
+
         return libros;
     }
 
@@ -52,7 +59,12 @@ public class IlibroImpl implements Ilibro {
 
     @Override
     public Libro save(Libro libro) {
-        return null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.save(libro);
+        session.getTransaction().commit();
+        session.close();
+        return libro;
     }
 
     @Override
@@ -62,6 +74,11 @@ public class IlibroImpl implements Ilibro {
 
     @Override
     public boolean delete(Libro libro) {
-        return false;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.delete(session.get(Libro.class, libro.getId()));
+        session.getTransaction().commit();
+        session.close();
+        return true;
     }
 }

@@ -21,21 +21,23 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="287.0" prefWidth="558.0">
                             <children>
                                 <Label layoutX="183.0" layoutY="30.0" text="Título:" />
-                                <TextField layoutX="245.0" layoutY="26.0" prefWidth="300.0" />
+                                <TextField fx:id="txtTitulo" layoutX="245.0" layoutY="26.0" prefWidth="300.0" />
+
+                                <Label fx:id="lblMensaje" layoutX="263.0" layoutY="257.0" prefHeight="45.0" prefWidth="262.0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: green; -fx-font-family: 'Segoe UI', sans-serif;  -fx-padding: 10px;" text="" />
 
                                 <Label layoutX="183.0" layoutY="79.0" text="Autor:" />
-                                <ListView layoutX="245.0" layoutY="79.0" prefHeight="120.0" prefWidth="300.0" />
+                                <ListView fx:id="ListaAutoresparaLibro" layoutX="245.0" layoutY="79.0" prefHeight="120.0" prefWidth="300.0" />
 
                                 <Label layoutX="185.0" layoutY="221.0" text="Editorial:" />
-                                <TextField layoutX="245.0" layoutY="217.0" prefWidth="300.0" />
+                                <TextField fx:id="txtEditorial" layoutX="245.0" layoutY="217.0" prefWidth="300.0" />
 
                                 <Label layoutX="187.0" layoutY="263.0" text="Año:" />
-                                <TextField layoutX="245.0" layoutY="259.0" prefWidth="300.0" />
+                                <TextField fx:id="txtFechaPublicacion" layoutX="245.0" layoutY="259.0" prefWidth="300.0" />
 
                                 <Label layoutX="185.0" layoutY="301.0" text="ISBN:" />
-                                <TextField layoutX="245.0" layoutY="297.0" prefWidth="300.0" />
+                                <TextField  fx:id="txtISBN" layoutX="245.0" layoutY="297.0" prefWidth="300.0" />
 
-                                <Button layoutX="349.0" layoutY="344.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="92.0" text="Guardar" />
+                                <Button onAction="#guardarLibro" layoutX="349.0" layoutY="344.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="92.0" text="Guardar" />
                             </children>
                         </AnchorPane>
                     </content>
@@ -73,7 +75,7 @@
                             <children>
                                 <ListView fx:id="listLibrosEliminar" layoutX="219.0" layoutY="58.0" prefHeight="200.0" prefWidth="350.0" />
 
-                                <Button fx:id="btnEliminar" layoutX="343.0" layoutY="296.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="102.0" text="Eliminar" />
+                                <Button fx:id="btnEliminar" onAction="#eliminarLibro" layoutX="343.0" layoutY="296.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="102.0" text="Eliminar" />
                             </children>
                         </AnchorPane>
                     </content>

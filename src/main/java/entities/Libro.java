@@ -15,7 +15,7 @@ public class Libro implements Serializable {
     private Integer id;
 
     private String titulo;
-    private Integer Isbn;
+    private String Isbn;
 
     @ManyToOne
     @JoinColumn(name = "Id_Autor")
@@ -28,7 +28,7 @@ public class Libro implements Serializable {
     public Libro() {
     }
 
-    public Libro(Integer id, String titulo, Integer isbn, Autor autor, String editorial, Integer fechapublicacion) {
+    public Libro(Integer id, String titulo, String isbn, Autor autor, String editorial, Integer fechapublicacion) {
         this.id = id;
         this.titulo = titulo;
         Isbn = isbn;
@@ -53,11 +53,11 @@ public class Libro implements Serializable {
         this.titulo = titulo;
     }
 
-    public Integer getIsbn() {
+    public String getIsbn() {
         return Isbn;
     }
 
-    public void setIsbn(Integer isbn) {
+    public void setIsbn(String isbn) {
         Isbn = isbn;
     }
 

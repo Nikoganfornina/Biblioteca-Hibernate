@@ -29,7 +29,7 @@ public class GestionAutoresController {
     @FXML
     private TableColumn<Autor, String> colNombre, colNacionalidad;
     @FXML
-    private ListView<Autor> listAutoresEliminar, listAutoresModificar, listResultados;
+    private ListView<Autor> listAutoresEliminar, listAutoresModificar, listResultados , ListaAutoresparaLibro ;
 
     private Autor autorSeleccionado;
 

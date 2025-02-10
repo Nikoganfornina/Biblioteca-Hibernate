@@ -15,7 +15,6 @@ public class MainController {
 
     }
 
-
     @FXML
     private void goToAutores() throws Exception {
         long inicio = System.nanoTime();
