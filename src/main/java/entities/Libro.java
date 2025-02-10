@@ -53,7 +53,6 @@ public class Libro implements Serializable {
         this.titulo = titulo;
     }
 
-
     public Integer getIsbn() {
         return Isbn;
     }
@@ -62,7 +61,6 @@ public class Libro implements Serializable {
         Isbn = isbn;
     }
 
-
     public Autor getAutor() {
         return autor;
     }
@@ -70,7 +68,6 @@ public class Libro implements Serializable {
     public void setAutor(Autor autor) {
         this.autor = autor;
     }
-
 
     public String getEditorial() {
         return editorial;
@@ -90,12 +87,7 @@ public class Libro implements Serializable {
 
     @Override
     public String toString() {
-        return "Libro{" +
-                "titulo='" + titulo + '\'' +
-                ", ISBN=" + Isbn +
-                ", autor='" + autor + '\'' +
-                ", editorial='" + editorial + '\'' +
-                ", fechapublicacion=" + fechapublicacion +
-                '}';
+
+        return titulo +  Isbn + autor +  editorial + fechapublicacion ;
     }
 }

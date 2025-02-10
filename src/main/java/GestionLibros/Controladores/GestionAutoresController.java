@@ -26,7 +26,7 @@ public class GestionAutoresController {
     @FXML
 
     private TableView<Autor> tablaAutores;
-     @FXML
+    @FXML
     private TableColumn<Autor, String> colNombre, colNacionalidad;
     @FXML
     private ListView<Autor> listAutoresEliminar, listAutoresModificar, listResultados;
@@ -66,6 +66,7 @@ public class GestionAutoresController {
             txtNacionalidadMod.setText(autorSeleccionado.getNacionalidad());
         }
     }
+
     @FXML
     public void modificarAutor() {
         System.out.println("Botón presionado: modificarAutor() ejecutado");
@@ -103,6 +104,7 @@ public class GestionAutoresController {
             }
         });
     }
+
     @FXML
     public void buscarAutor() {
         String busqueda = txtBuscar.getText();
@@ -111,7 +113,6 @@ public class GestionAutoresController {
         ObservableList<Autor> autores = FXCollections.observableArrayList(autoresEncontrados);
         listResultados.setItems(autores);
     }
-
 
 
     public void actualizarListaAutores() {
@@ -148,5 +149,29 @@ public class GestionAutoresController {
         colNacionalidad.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNacionalidad()));
         listAutoresModificar.setOnMouseClicked(event -> seleccionarAutorModificar());
         actualizarListaAutores();
+    }
+
+
+    @FXML
+    public void eliminarAutor() {
+        Autor autorSeleccionado = listAutoresEliminar.getSelectionModel().getSelectedItem();
+        if (autorSeleccionado != null) {
+            Alert confirmacion = new Alert(AlertType.CONFIRMATION, "¿Seguro que quieres eliminar este autor?", ButtonType.YES, ButtonType.NO);
+            confirmacion.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.YES) {
+                    IAutorImpl autorDao = new IAutorImpl();
+                    autorDao.delete(autorSeleccionado);
+
+                    listAutoresEliminar.getItems().remove(autorSeleccionado);
+                    listAutoresModificar.getItems().remove(autorSeleccionado);
+                    tablaAutores.getItems().remove(autorSeleccionado);
+
+                    mostrarAlerta("Información", "Autor eliminado con éxito", AlertType.INFORMATION);
+                    ocultarMensajeDespuesDeTiempo();
+                }
+            });
+        } else {
+            mostrarAlerta("Error", "Debe seleccionar un autor", AlertType.ERROR);
+        }
     }
 }

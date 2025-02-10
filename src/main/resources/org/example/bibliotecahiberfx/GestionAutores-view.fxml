@@ -6,15 +6,10 @@
 <AnchorPane prefHeight="600.0" prefWidth="900.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GestionLibros.Controladores.GestionAutoresController">
 
     <children>
-        <!-- Título -->
         <Label fx:id="subtitulo" layoutX="250.0" layoutY="20.0" prefHeight="55.0" prefWidth="400.0" text="GESTIÓN DE AUTORES" />
-        <!-- Botón Salir -->
         <Button layoutX="785.0" layoutY="527.0" mnemonicParsing="false" onAction="#volver" prefHeight="39.0" prefWidth="85.0" styleClass="button1" text="VOLVER" />
-
-        <!-- TabPane -->
         <TabPane layoutX="55.0" layoutY="77.0" prefHeight="446.0" prefWidth="789.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
-                <!-- Tab Añadir -->
                 <Tab text="Añadir">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="287.0" prefWidth="558.0">
@@ -33,8 +28,6 @@
                         </AnchorPane>
                     </content>
                 </Tab>
-
-                <!-- Tab Modificar -->
                 <Tab text="Modificar">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="287.0" prefWidth="558.0">
@@ -52,21 +45,17 @@
                         </AnchorPane>
                     </content>
                 </Tab>
-
-                <!-- Tab Eliminar -->
                 <Tab text="Eliminar">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="287.0" prefWidth="558.0">
                             <children>
                                 <ListView fx:id="listAutoresEliminar" layoutX="244.0" layoutY="70.0" prefHeight="200.0" prefWidth="300.0" />
 
-                                <Button fx:id="btnEliminar" layoutX="360.0" layoutY="319.0" mnemonicParsing="false" text="Eliminar" />
+                                <Button fx:id="btnEliminar" onAction="#eliminarAutor" layoutX="360.0" layoutY="319.0" mnemonicParsing="false" text="Eliminar" />
                             </children>
                         </AnchorPane>
                     </content>
                 </Tab>
-
-                <!-- Tab Buscar -->
                 <Tab text="Buscar">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="287.0" prefWidth="558.0">
@@ -82,8 +71,6 @@
                         </AnchorPane>
                     </content>
                 </Tab>
-
-                <!-- Tab Listado -->
                 <Tab text="Listado">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="287.0" prefWidth="558.0">

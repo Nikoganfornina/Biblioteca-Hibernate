@@ -25,25 +25,8 @@ public class MainApp extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        // Llamar al método findAll() al arrancar el programa
-        listarAutores(); // Asegúrate de llamar a la función aquí
     }
 
-    // Método para listar autores
-    public void listarAutores() {
-        IAutorImpl autorDao = new IAutorImpl();
-        List<Autor> autores = autorDao.findAll();
-
-        // Verificar si hemos obtenido autores y mostrarlos en consola
-        if (autores != null && !autores.isEmpty()) {
-            System.out.println("Autores encontrados:");
-            for (Autor autor : autores) {
-                System.out.println("Nombre: " + autor.getNombre() + ", Nacionalidad: " + autor.getNacionalidad());
-            }
-        } else {
-            System.out.println("No se encontraron autores en la base de datos.");
-        }
-    }
 
     public static void switchScene(String fxml) throws Exception {
         FXMLLoader fXMLLoader = new FXMLLoader(MainApp.class.getResource(fxml));
