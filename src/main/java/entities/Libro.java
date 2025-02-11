@@ -85,9 +85,13 @@ public class Libro implements Serializable {
         this.fechapublicacion = fechapublicacion;
     }
 
+
+
     @Override
     public String toString() {
-
-        return titulo +  Isbn + autor +  editorial + fechapublicacion ;
+        return  "Titulo='" + titulo + '\'' + ", Isbn='" + Isbn + '\'' +
+                ", Autor=" + autor + ", Editorial ='" + editorial + '\'' +  ", Fecha Publicacion=" + fechapublicacion +
+                '}';
     }
+
 }

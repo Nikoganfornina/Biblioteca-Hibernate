@@ -75,7 +75,6 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="287.0" prefWidth="558.0">
                             <children>
-
                                 <TableView fx:id="tablaAutores" layoutX="137.0" layoutY="73.0" prefHeight="270.0" prefWidth="515.0">
                                     <columns>
                                         <TableColumn fx:id="colNombre" prefWidth="258.0" text="Nombre" />

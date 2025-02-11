@@ -12,7 +12,7 @@
                 <Font size="14.0" />
             </font>
         </Label>
-        <Button layoutX="785.0" layoutY="527.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="85.0" onAction="#volver" styleClass="button1" text="VOLVER" />
+        <Button layoutX="785.0" layoutY="527.0" mnemonicParsing="false" onAction="#volver" prefHeight="39.0" prefWidth="85.0" styleClass="button1" text="VOLVER" />
 
         <TabPane layoutX="55.0" layoutY="77.0" prefHeight="446.0" prefWidth="789.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
@@ -35,9 +35,9 @@
                                 <TextField fx:id="txtFechaPublicacion" layoutX="245.0" layoutY="259.0" prefWidth="300.0" />
 
                                 <Label layoutX="185.0" layoutY="301.0" text="ISBN:" />
-                                <TextField  fx:id="txtISBN" layoutX="245.0" layoutY="297.0" prefWidth="300.0" />
+                                <TextField fx:id="txtISBN" layoutX="245.0" layoutY="297.0" prefWidth="300.0" />
 
-                                <Button onAction="#guardarLibro" layoutX="349.0" layoutY="344.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="92.0" text="Guardar" />
+                                <Button layoutX="349.0" layoutY="344.0" mnemonicParsing="false" onAction="#guardarLibro" prefHeight="46.0" prefWidth="92.0" text="Guardar" />
                             </children>
                         </AnchorPane>
                     </content>
@@ -73,10 +73,18 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="287.0" prefWidth="558.0">
                             <children>
-                                <ListView fx:id="listLibrosEliminar" layoutX="219.0" layoutY="58.0" prefHeight="200.0" prefWidth="350.0" />
-
-                                <Button fx:id="btnEliminar" onAction="#eliminarLibro" layoutX="343.0" layoutY="296.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="102.0" text="Eliminar" />
+                                <TableView fx:id="tablaLibrosEliminar" layoutX="5.0" layoutY="42.0" prefHeight="270.0" prefWidth="780.0">
+                                    <columns>
+                                        <TableColumn fx:id="colTitulo" prefWidth="200.0" text="Título" />
+                                        <TableColumn fx:id="colAutor" prefWidth="150.0" text="Autor" />
+                                        <TableColumn fx:id="colEditorial" prefWidth="150.0" text="Editorial" />
+                                        <TableColumn fx:id="colAnio" prefWidth="100.0" text="Año" />
+                                        <TableColumn fx:id="colISBN" prefWidth="180.0" text="ISBN" />
+                                    </columns>
+                                </TableView>
+                                <Button fx:id="btnEliminar" layoutX="350.0" layoutY="340.0" mnemonicParsing="false" onAction="#eliminarLibro" prefHeight="50.0" prefWidth="100.0" text="Eliminar" />
                             </children>
+
                         </AnchorPane>
                     </content>
                 </Tab>

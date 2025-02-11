@@ -7,6 +7,8 @@ import entities.Autor;
 import entities.Libro;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -30,11 +32,20 @@ public class GestionLibrosController {
     @FXML
     private Label lblMensaje;
     @FXML
-    private ListView<Libro> listLibrosEliminar;
+    private TableView<Libro> tablaLibrosEliminar;
+    @FXML
+    private TableColumn<Libro, String> colTitulo;
+    @FXML
+    private TableColumn<Libro, String> colAutor;
+    @FXML
+    private TableColumn<Libro, String> colEditorial;
+    @FXML
+    private TableColumn<Libro, Integer> colAnio;
+    @FXML
+    private TableColumn<Libro, String> colISBN;
 
     private ObservableList<Libro> listaLibrosObservable = FXCollections.observableArrayList();
 
-    // Método para volver a la pantalla principal
     @FXML
     private void volver() throws Exception {
         long inicio = System.nanoTime();
@@ -44,25 +55,29 @@ public class GestionLibrosController {
     }
 
     @FXML
-    // Método para inicializar la lista de autores en el ListView
     public void actualizarListaAutores() {
         IAutorImpl autorDao = new IAutorImpl();
         List<Autor> autores = autorDao.findAll();
-
-        ListaAutoresparaLibro.getItems().clear();
-        ListaAutoresparaLibro.getItems().addAll(autores);
+        ListaAutoresparaLibro.getItems().setAll(autores);
     }
 
     public void actualizarListaLibros() {
         IlibroImpl libroDao = new IlibroImpl();
         List<Libro> libros = libroDao.findAll();
-
-        listaLibrosObservable.clear();  // Limpiar la lista antes de actualizar
-        listaLibrosObservable.addAll(libros);
-        listLibrosEliminar.setItems(listaLibrosObservable);  // Asignar ObservableList al ListView
+        listaLibrosObservable.setAll(libros);
     }
 
-    // Método para guardar un nuevo libro
+    private void cargarDatosTabla() {
+        colTitulo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitulo()));
+        colAutor.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAutor().getNombre()));
+        colEditorial.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEditorial()));
+        colAnio.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getFechapublicacion()).asObject());
+        colISBN.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIsbn()));
+
+        tablaLibrosEliminar.setItems(listaLibrosObservable);
+        actualizarListaLibros();
+    }
+
     @FXML
     public void guardarLibro() {
         String titulo = txtTitulo.getText();
@@ -71,12 +86,7 @@ public class GestionLibrosController {
         String editorial = txtEditorial.getText();
         Integer fechapublicacion = Integer.parseInt(txtFechaPublicacion.getText());
 
-        Libro libro = new Libro();
-        libro.setTitulo(titulo);
-        libro.setIsbn(isbn);
-        libro.setAutor(autor);
-        libro.setEditorial(editorial);
-        libro.setFechapublicacion(fechapublicacion);
+        Libro libro = new Libro(null , titulo, isbn, autor, editorial, fechapublicacion);
 
         IlibroImpl libroDao = new IlibroImpl();
         libroDao.save(libro);
@@ -86,18 +96,16 @@ public class GestionLibrosController {
         ListaAutoresparaLibro.getSelectionModel().clearSelection();
         txtEditorial.clear();
         txtFechaPublicacion.clear();
-        lblMensaje.setText("Autor añadido con éxito");
+        lblMensaje.setText("Libro añadido con éxito");
         lblMensaje.setStyle("-fx-text-fill: green;");
         ocultarMensajeDespuesDeTiempo();
-
-        actualizarListaAutores();
+        actualizarListaLibros();
     }
 
-    // Método para inicializar la interfaz (por ejemplo, cargar autores en la lista)
     @FXML
     public void initialize() {
         actualizarListaAutores();
-        actualizarListaLibros();
+        cargarDatosTabla();
     }
 
     private void ocultarMensajeDespuesDeTiempo() {
@@ -110,19 +118,15 @@ public class GestionLibrosController {
 
     @FXML
     public void eliminarLibro() {
-        Libro libroSeleccionado = listLibrosEliminar.getSelectionModel().getSelectedItem();
+        Libro libroSeleccionado = tablaLibrosEliminar.getSelectionModel().getSelectedItem();
         if (libroSeleccionado != null) {
             Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION, "¿Seguro que quieres eliminar este libro?", ButtonType.YES, ButtonType.NO);
             confirmacion.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.YES) {
                     IlibroImpl libroDao = new IlibroImpl();
-                    libroDao.delete(libroSeleccionado); // Eliminar de la base de datos
-
-                    // Aquí actualizas la lista después de la eliminación
-                    listaLibrosObservable.remove(libroSeleccionado);  // Eliminar del ObservableList
-
+                    libroDao.delete(libroSeleccionado);
+                    listaLibrosObservable.remove(libroSeleccionado);
                     mostrarAlerta("Información", "Libro eliminado con éxito", Alert.AlertType.INFORMATION);
-                    ocultarMensajeDespuesDeTiempo();
                 }
             });
         } else {
