@@ -8,24 +8,24 @@
         <!-- Título -->
         <Label fx:id="subtitulo" layoutX="98.0" layoutY="22.0" prefHeight="72.0" prefWidth="704.0" styleClass="titulo" text="GESTIÓN DE AUTORES" />
 
-        <!-- Botón Volver -->
-        <Button layoutX="749.0" layoutY="519.0" mnemonicParsing="false" onAction="#volver" prefHeight="58.0" prefWidth="136.0" styleClass="button1" text="VOLVER" />
-
         <!-- TabPane para los tabs -->
-        <TabPane layoutX="55.0" layoutY="113.0" prefHeight="445.0" prefWidth="792.0" styleClass="tab-pane" tabClosingPolicy="UNAVAILABLE">
+        <TabPane layoutX="42.0" layoutY="94.0" prefHeight="464.0" prefWidth="816.0" styleClass="tab-pane" tabClosingPolicy="UNAVAILABLE">
             <tabs>
                 <!-- Tab Añadir -->
                 <Tab styleClass="tab" text="Añadir">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="350.0" prefWidth="600.0">
                             <children>
-                                <Label layoutX="184.0" layoutY="126.0" styleClass="label" text="Nombre:" />
-                                <TextField fx:id="txtNombre" layoutX="333.0" layoutY="126.0" prefWidth="250.0" styleClass="text-field" />
+                                <Label layoutX="198.0" layoutY="109.0" styleClass="label" text="Nombre:" />
+                                <TextField fx:id="txtNombre" layoutX="380.0" layoutY="100.0" prefHeight="50.0" prefWidth="250.0" styleClass="text-field" />
 
-                                <Label layoutX="184.0" layoutY="187.0" styleClass="label" text="Nacionalidad:" />
-                                <TextField fx:id="txtNacionalidad" layoutX="333.0" layoutY="183.0" prefWidth="250.0" styleClass="text-field" />
+                                <Label layoutX="198.0" layoutY="177.0" styleClass="label" text="Nacionalidad:" />
+                                <TextField fx:id="txtNacionalidad" layoutX="380.0" layoutY="168.0" prefHeight="50.0" prefWidth="250.0" styleClass="text-field" />
 
-                                <Button fx:id="btnGuardar" layoutX="333.0" layoutY="300.0" mnemonicParsing="false" onAction="#guardarAutor" prefHeight="64.0" prefWidth="160.0" styleClass="button" text="Guardar" />
+                                <Button fx:id="btnGuardar" layoutX="314.0" layoutY="303.0" mnemonicParsing="false" onAction="#guardarAutor" prefHeight="64.0" prefWidth="160.0" styleClass="button" text="Guardar" />
+                  
+                          <!-- Botón Volver -->
+                          <Button layoutX="637.0" layoutY="335.0" mnemonicParsing="false" onAction="#volver" prefHeight="58.0" prefWidth="136.0" styleClass="button1" text="VOLVER" />
                             </children>
                         </AnchorPane>
                     </content>
@@ -38,13 +38,14 @@
                             <children>
                                 <ListView fx:id="listAutoresModificar" layoutX="38.0" layoutY="50.0" prefHeight="308.0" prefWidth="250.0" styleClass="list-view" />
 
-                                <Label layoutX="364.0" layoutY="119.0" styleClass="label" text="Nombre:" />
-                                <TextField fx:id="txtNombreMod" layoutX="455.0" layoutY="115.0" prefWidth="250.0" styleClass="text-field" />
+                                <Label layoutX="315.0" layoutY="103.0" styleClass="label" text="Nombre:" />
+                                <TextField fx:id="txtNombreMod" layoutX="495.0" layoutY="94.0" prefHeight="50.0" prefWidth="250.0" styleClass="text-field" />
 
-                                <Label layoutX="352.0" layoutY="211.0" styleClass="label" text="Nacionalidad:" />
-                                <TextField fx:id="txtNacionalidadMod" layoutX="455.0" layoutY="207.0" prefWidth="250.0" styleClass="text-field" />
+                                <Label layoutX="315.0" layoutY="211.0" styleClass="label" text="Nacionalidad:" />
+                                <TextField fx:id="txtNacionalidadMod" layoutX="495.0" layoutY="202.0" prefHeight="50.0" prefWidth="250.0" styleClass="text-field" />
 
                                 <Button fx:id="btnGuardarMod" layoutX="337.0" layoutY="300.0" mnemonicParsing="false" onAction="#modificarAutor" prefHeight="50.0" prefWidth="130.0" styleClass="button" text="Guardar" />
+                                <Button layoutX="637.0" layoutY="335.0" mnemonicParsing="false" onAction="#volver" prefHeight="58.0" prefWidth="136.0" styleClass="button1" text="VOLVER" />
                             </children>
                         </AnchorPane>
                     </content>
@@ -55,9 +56,10 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="350.0" prefWidth="600.0">
                             <children>
-                                <ListView fx:id="listAutoresEliminar" layoutX="244.0" layoutY="70.0" prefHeight="200.0" prefWidth="300.0" styleClass="list-view" />
+                                <ListView fx:id="listAutoresEliminar" layoutX="210.0" layoutY="71.0" prefHeight="229.0" prefWidth="389.0" styleClass="list-view" />
 
-                                <Button fx:id="btnEliminar" layoutX="360.0" layoutY="300.0" mnemonicParsing="false" onAction="#eliminarAutor" prefHeight="50.0" prefWidth="150.0" styleClass="button" text="Eliminar" />
+                                <Button fx:id="btnEliminar" layoutX="306.0" layoutY="338.0" mnemonicParsing="false" onAction="#eliminarAutor" prefHeight="64.0" prefWidth="198.0" styleClass="button" text="Eliminar" />
+                                <Button layoutX="637.0" layoutY="335.0" mnemonicParsing="false" onAction="#volver" prefHeight="58.0" prefWidth="136.0" styleClass="button1" text="VOLVER" />
                             </children>
                         </AnchorPane>
                     </content>
@@ -68,12 +70,13 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="350.0" prefWidth="600.0">
                             <children>
-                                <Label layoutX="180.0" layoutY="103.0" styleClass="label" text="Nombre" />
-                                <TextField fx:id="txtBuscar" layoutX="240.0" layoutY="99.0" prefWidth="250.0" styleClass="text-field" />
+                                <Label layoutX="116.0" layoutY="55.0" prefHeight="32.0" prefWidth="124.0" styleClass="label" text="Nombre :" />
+                                <TextField fx:id="txtBuscar" layoutX="255.0" layoutY="46.0" prefHeight="50.0" prefWidth="250.0" styleClass="text-field" />
 
-                                <Button fx:id="btnBuscar" layoutX="514.0" layoutY="97.0" mnemonicParsing="false" onAction="#buscarAutor" prefHeight="50.0" prefWidth="120.0" styleClass="button" text="Buscar" />
+                                <Button fx:id="btnBuscar" layoutX="540.0" layoutY="46.0" mnemonicParsing="false" onAction="#buscarAutor" prefHeight="50.0" prefWidth="151.0" styleClass="button" text="Buscar" />
 
-                                <ListView fx:id="listResultados" layoutX="180.0" layoutY="139.0" prefHeight="220.0" prefWidth="400.0" styleClass="list-view" />
+                                <ListView fx:id="listResultados" layoutX="212.0" layoutY="122.0" prefHeight="270.0" prefWidth="388.0" styleClass="list-view" />
+                                <Button layoutX="637.0" layoutY="335.0" mnemonicParsing="false" onAction="#volver" prefHeight="58.0" prefWidth="136.0" styleClass="button1" text="VOLVER" />
                             </children>
                         </AnchorPane>
                     </content>
@@ -84,12 +87,13 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="350.0" prefWidth="600.0">
                             <children>
-                                <TableView fx:id="tablaAutores" layoutX="137.0" layoutY="73.0" prefHeight="270.0" prefWidth="515.0" styleClass="table-view">
+                                <TableView fx:id="tablaAutores" layoutX="137.0" layoutY="73.0" prefHeight="270.0" prefWidth="480.0" styleClass="table-view">
                                     <columns>
-                                        <TableColumn fx:id="colNombre" prefWidth="258.0" text="Nombre" />
-                                        <TableColumn fx:id="colNacionalidad" prefWidth="141.99996948242188" text="Nacionalidad" />
+                                        <TableColumn fx:id="colNombre" prefWidth="245.0" text="Nombre" />
+                                        <TableColumn fx:id="colNacionalidad" prefWidth="245.0" text="Nacionalidad" />
                                     </columns>
                                 </TableView>
+                                <Button layoutX="637.0" layoutY="335.0" mnemonicParsing="false" onAction="#volver" prefHeight="58.0" prefWidth="136.0" styleClass="button1" text="VOLVER" />
                             </children>
                         </AnchorPane>
                     </content>

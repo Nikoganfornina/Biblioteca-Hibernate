@@ -62,3 +62,47 @@
     -fx-border-width: 2px;
     -fx-border-radius: 8px 8px 0 0;
 }
+/* ListView con fondo transparente y borde gris */
+.list-view {
+    -fx-background-color: transparent;
+    -fx-border-color: #B0B0B0; /* Borde gris */
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+}
+
+/* Fondo de las celdas del ListView transparente */
+.list-view .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: white; /* Color del texto */
+}
+
+/* TableView con fondo transparente y borde gris */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: #B0B0B0; /* Borde gris */
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+}
+
+/* Fondo de las filas del TableView transparente */
+.table-view .column-header-background {
+    -fx-background-color: transparent; /* Fondo de los encabezados */
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: white; /* Color del texto */
+}
+
+.table-view .virtual-flow .scroll-bar:horizontal {
+    -fx-opacity: 0;
+    -fx-padding: 0;
+    -fx-pref-height: 0;
+    -fx-min-height: 0;
+    -fx-max-height: 0;
+}
+.table-column {
+    -fx-background-color: transparent; /* Hace las columnas transparentes */
+}
+
+

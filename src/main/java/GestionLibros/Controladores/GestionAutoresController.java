@@ -22,8 +22,6 @@ public class GestionAutoresController {
     @FXML
     private Button btnGuardar, btnGuardarMod, btnBuscar;
     @FXML
-    private Label lblMensaje;
-    @FXML
 
     private TableView<Autor> tablaAutores;
     @FXML
@@ -52,9 +50,6 @@ public class GestionAutoresController {
 
         txtNombre.clear();
         txtNacionalidad.clear();
-        lblMensaje.setText("Autor añadido con éxito");
-        lblMensaje.setStyle("-fx-text-fill: green;");
-        ocultarMensajeDespuesDeTiempo();
         actualizarListaAutores();
     }
 
@@ -93,8 +88,7 @@ public class GestionAutoresController {
                 Autor actualizado = autorDao.update(autorSeleccionado);
 
                 if (actualizado != null) {
-                    lblMensaje.setText("Autor modificado con éxito");
-                    lblMensaje.setStyle("-fx-text-fill: blue;");
+
                     System.out.println("Autor actualizado correctamente");
                     actualizarListaAutores(); // Refresca la lista de autores
                 } else {
@@ -135,13 +129,7 @@ public class GestionAutoresController {
         alerta.showAndWait();
     }
 
-    private void ocultarMensajeDespuesDeTiempo() {
-        Timeline timeline = new Timeline(new KeyFrame(
-                Duration.seconds(3),
-                event -> lblMensaje.setText("")
-        ));
-        timeline.play();
-    }
+
 
     @FXML
     public void initialize() {
@@ -167,7 +155,6 @@ public class GestionAutoresController {
                     tablaAutores.getItems().remove(autorSeleccionado);
 
                     mostrarAlerta("Información", "Autor eliminado con éxito", AlertType.INFORMATION);
-                    ocultarMensajeDespuesDeTiempo();
                 }
             });
         } else {
