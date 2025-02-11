@@ -53,7 +53,7 @@
                                 <TextField fx:id="txtTituloMod" layoutX="420.0" layoutY="39.0" prefWidth="250.0" />
 
                                 <Label layoutX="364.0" layoutY="101.0" text="Autor:" />
-                                <ListView layoutX="420.0" layoutY="90.0" prefHeight="40.0" prefWidth="250.0" />
+                                <ListView fx:id="listaAutoresMod" layoutX="420.0" layoutY="90.0" prefHeight="40.0" prefWidth="250.0" />
 
                                 <Label layoutX="357.0" layoutY="159.0" text="Editorial:" />
                                 <TextField fx:id="txtEditorialMod" layoutX="420.0" layoutY="155.0" prefWidth="250.0" />

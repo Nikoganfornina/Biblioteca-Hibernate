@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import entities.Autor;
 import DAO.IAutorImpl;
+import javafx.stage.StageStyle;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -23,6 +24,7 @@ public class MainApp extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         primaryStage.setTitle("Biblioteca Niko");
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
 
     }

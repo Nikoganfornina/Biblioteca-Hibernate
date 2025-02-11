@@ -94,4 +94,7 @@ public class Libro implements Serializable {
                 '}';
     }
 
+    public String toStringOnlyName() {
+        return "Libro : " + titulo + "Autor : " + autor;
+    }
 }

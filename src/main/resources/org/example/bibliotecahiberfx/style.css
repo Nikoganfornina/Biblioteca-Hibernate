@@ -1,39 +1,64 @@
+/* Estilos Generales */
 .anchor-pane {
-    -fx-background-color: #F1F1F1;
+    -fx-background-color: linear-gradient(to bottom, #4F9B9B, #3A6A6A); /* Degradado en tonos verde-agua oscuro */
 }
+
+.titulo {
+    -fx-font-size: 60px;
+    -fx-font-weight: bold;
+    -fx-fill: #FFFFFF; /* Blanco para un contraste elegante */
+    -fx-alignment: center;
+    -fx-font-family: "Segoe UI", sans-serif; /* Fuente más moderna y limpia */
+}
+
+.subtitulo {
+    -fx-font-size: 22px;
+    -fx-fill: #B2D0D0; /* Azul muy suave, casi grisáceo, para los subtítulos */
+    -fx-alignment: center;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
 .button {
-    -fx-background-color: #1E90FF;
+    -fx-background-color: #3A7F7F; /* Azul verdoso suave para los botones */
     -fx-text-fill: white;
-    -fx-font-size: 14px;
+    -fx-font-size: 16px;
     -fx-background-radius: 12px;
-    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.2), 3, 0, 0, 1);
-}
-.button1 {
-    -fx-background-color: red ;
-    -fx-text-fill: white;
-    -fx-font-size: 14px;
-    -fx-background-radius: 12px;
-    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.2), 3, 0, 0, 1);
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.3), 3, 0, 0, 1);
+    -fx-padding: 10 20;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-border-color: #B0B0B0; /* Gris claro para bordes */
+    -fx-border-width: 2px; /* Grosor del borde */
+    -fx-border-radius: 12px; /* Redondear los bordes */
 }
 
 .button:hover {
-    -fx-background-color: #87CEEB;
-    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.2), 3, 0, 0, 1);
-}
-.button1:hover {
-    -fx-background-color: #FF4500;
-    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);
+    -fx-background-color: #6FA5A5; /* Azul verdoso un poco más claro cuando se pasa el mouse */
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.3), 3, 0, 0, 1);
+    -fx-border-color: #A0A0A0; /* Gris más oscuro en hover para el borde */
 }
 
-#titulo {
-    -fx-font-size: 54px;
-    -fx-font-weight: bold;
-    -fx-fill: white;
-    -fx-fill: #1E90FF;
-    -fx-alignment: center;
+.button:pressed {
+    -fx-background-color: #336C6C; /* Azul verdoso más oscuro cuando se presiona el botón */
+    -fx-border-color: #5A5A5A; /* Gris más oscuro cuando se presiona */
 }
-#subtitulo {
-    -fx-font-size:20px;
-    -fx-fill: white;
-    -fx-alignment: center;
+
+.label {
+    -fx-font-size: 26px;
+    -fx-text-fill: #FFFFFF; /* En lugar de -fx-fill */
+    -fx-font-family: "Segoe UI", sans-serif; /* Fuente más moderna y limpia */
+}
+/* Hacer el fondo del TabPane transparente y agregar un borde */
+.tab-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: #B0B0B0; /* Borde gris */
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+}
+
+/* Hacer el fondo de la barra superior de tabs transparente */
+.tab-header-area {
+    -fx-background-color: transparent;
+    -fx-border-color: #B0B0B0; /* Borde gris */
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px 8px 0 0;
 }

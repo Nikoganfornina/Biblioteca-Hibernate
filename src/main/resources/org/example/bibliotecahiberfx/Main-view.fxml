@@ -1,33 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" styleClass="anchor-pane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GestionLibros.Controladores.MainController">
 
+    <!-- Fondo con gradiente y bordes redondeados -->
+    <AnchorPane style="-fx-background-color: linear-gradient(to bottom, #5F9EA0, #4682B4); -fx-background-radius: 20;" />
 
-    <HBox alignment="CENTER" layoutX="150.0" layoutY="400.0" prefHeight="100.0" prefWidth="600.0" spacing="20">
-        <padding>
-            <Insets left="30" right="30" />
-        </padding>
+    <!-- Título centralizado con texto grande y elegante -->
+    <Label fx:id="titulo" layoutX="200.0" layoutY="40.0" prefWidth="500.0" styleClass="titulo" text="Biblioteca FX" />
 
-        <Button prefHeight="80" prefWidth="180" styleClass="button" onAction="#goToLibros" text="Gestion Libros" />
-        <Button prefHeight="80" prefWidth="180" styleClass="button"  onAction="#goToAutores" text="Gestion Autores" />
-        <Button prefHeight="80" prefWidth="180" styleClass="button" text="Gestion Socios" />
-        <Button prefHeight="80" prefWidth="180" styleClass="button" text="Prestamos" />
-
-    </HBox>
-
-    <Label fx:id="titulo" layoutX="275.0" layoutY="45.0" prefWidth="350.0"  text="Biblioteca FX" />
-
-    <VBox  fx:id="subtitulo" layoutY="200.0" prefWidth="900.0" spacing="10" alignment="CENTER">
-        <Text text="Aplicativo de gestión de la Biblioteca de Niko" />
-        <Text text="Una biblioteca virtual" />
-        <Text text="Elija una opción" />
+    <!-- Subtítulo con texto más pequeño y delicado -->
+    <VBox fx:id="subtitulo" alignment="CENTER" layoutY="120.0" prefWidth="900.0" spacing="10">
+        <Text styleClass="subtitulo" text="Aplicativo de gestión de la Biblioteca de Niko" />
+        <Text styleClass="subtitulo" text="Una biblioteca virtual" />
     </VBox>
 
-    <Button onAction="#salir"  layoutX="764.0" layoutY="512.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="70.0" styleClass="button1" text="Salir" />
+    <!-- Sección de botones de navegación -->
+    <VBox alignment="CENTER" layoutY="250.0" spacing="20" />
+
+    <!-- Añadir un pie de página con información adicional -->
+    <Label layoutX="309.0" layoutY="564.0" style="-fx-text-fill: #2F4F4F; -fx-font-size: 12px;" text="© 2023 Biblioteca FX. Todos los derechos reservados." />
+
+    <!-- Botones de gestión -->
+    <HBox alignment="CENTER" layoutX="256.0" layoutY="292.0" spacing="20">
+        <Button onAction="#goToLibros" prefHeight="80" prefWidth="180" styleClass="button" text="Gestion Libros" />
+        <Button onAction="#goToAutores" prefHeight="80" prefWidth="180" styleClass="button" text="Gestion Autores" />
+    </HBox>
+    <HBox alignment="CENTER" layoutX="256.0" layoutY="402.0" spacing="20">
+        <Button prefHeight="80" prefWidth="180" styleClass="button" text="Gestion Socios" />
+        <Button prefHeight="80" prefWidth="180" styleClass="button" text="Prestamos" />
+    </HBox>
 
 </AnchorPane>
