@@ -21,6 +21,8 @@
 
         <mapping class="entities.Libro"/>
         <mapping class="entities.Autor"/>
+        <mapping class="entities.Prestamos"/>
+        <mapping class="entities.Socio"/>
 
 
     </session-factory>

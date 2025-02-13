@@ -6,8 +6,9 @@ module org.example.bibliotecafx {
         requires org.hibernate.orm.core;
         requires jakarta.persistence;
         requires java.naming;
+    requires jdk.compiler;
 
-        opens GestionLibros to javafx.fxml;
+    opens GestionLibros to javafx.fxml;
         opens entities to org.hibernate.orm.core;
 
         exports GestionLibros;
