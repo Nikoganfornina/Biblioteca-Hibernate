@@ -1,14 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="GestionLibros.GestionSociosApp"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" styleClass="anchor-pane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GestionLibros.Controladores.GestionarSocioController">
 
+    <children>
+        <!-- Título -->
+        <Label fx:id="subtitulo" alignment="CENTER" layoutX="322.0" layoutY="14.0" prefHeight="55.0" prefWidth="256.0" text="GESTIÓN DE SOCIOS" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font></Label>
+        <!-- Botón Salir -->
+        <Button layoutX="750.0" layoutY="538.0" mnemonicParsing="false" onAction="#volver" prefHeight="40.0" prefWidth="114.0" styleClass="button1" text="VOLVER" />
+
+        <!-- TabPane -->
+        <TabPane layoutX="55.0" layoutY="77.0" prefHeight="446.0" prefWidth="789.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <!-- Tab Añadir -->
+                <Tab text="Añadir">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="342.0" prefWidth="667.0">
+
+                            <Label fx:id="lblMensaje" layoutX="263.0" layoutY="257.0" prefHeight="45.0" prefWidth="262.0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: green; -fx-font-family: 'Segoe UI', sans-serif;  -fx-padding: 10px;" text="" />
+
+                            <children>
+                                <Label layoutX="184.0" layoutY="100.0" text="Nombre:" />
+                                <TextField fx:id="txtNombre" layoutX="333.0" layoutY="100.0" prefWidth="200.0" />
+
+                                <Label layoutX="184.0" layoutY="150.0" text="Direccion:" />
+                                <TextField fx:id="txtDireccion" layoutX="333.0" layoutY="150.0" prefWidth="200.0" />
+
+                                <Label layoutX="184.0" layoutY="200.0" text="Telefono:" />
+                                <TextField fx:id="txtTelefono" layoutX="333.0" layoutY="200.0" prefWidth="200.0" />
+
+                                <Button fx:id="btnGuardar" layoutX="333.0" layoutY="310.0" mnemonicParsing="false" onAction="#guardarSocio" prefHeight="64.0" prefWidth="124.0" text="Guardar" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+
+                <!-- Tab Modificar -->
+                <Tab text="Modificar">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="287.0" prefWidth="558.0">
+                            <children>
+                                <ListView fx:id="listSociosModificar" layoutX="27.0" layoutY="43.0" prefHeight="200.0" prefWidth="677.0" />
+
+                                <Label layoutX="42.0" layoutY="282.0" text="Nombre:" />
+                                <TextField fx:id="txtNombreMod" layoutX="210.0" layoutY="282.0" prefWidth="200.0" />
+
+                                <Label layoutX="39.0" layoutY="319.0" text="Direccion:" />
+                                <TextField fx:id="txtDireccionMod" layoutX="210.0" layoutY="322.0" prefWidth="200.0" />
+
+                                <Label layoutX="41.0" layoutY="352.0" text="Telefono:" />
+                                <TextField fx:id="txtTelefonoMod" layoutX="210.0" layoutY="358.0" prefWidth="200.0" />
+
+                                <Button fx:id="btnGuardarMod" layoutX="564.0" layoutY="303.0" mnemonicParsing="false" onAction="#modificarSocio" prefHeight="49.0" prefWidth="114.0" text="Guardar" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+
+                <!-- Tab Eliminar -->
+                <Tab text="Eliminar">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="287.0" prefWidth="558.0">
+                            <children>
+                                <ListView fx:id="listSociosEliminar" layoutX="244.0" layoutY="70.0" prefHeight="200.0" prefWidth="300.0" />
+
+                                <Button fx:id="btnEliminar" layoutX="360.0" layoutY="319.0" mnemonicParsing="false" onAction="#eliminarSocio" text="Eliminar" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+
+                <!-- Tab Buscar -->
+                <Tab text="Buscar">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="287.0" prefWidth="558.0">
+                            <children>
+
+                                <Label layoutX="262.0" layoutY="51.0" text="Nombre/Telefono" />
+                                <TextField fx:id="txtBuscar" layoutX="240.0" layoutY="99.0" prefWidth="220.0" />
+
+                                <Button fx:id="btnBuscar" layoutX="513.0" layoutY="83.0" mnemonicParsing="false" onAction="#buscarSocio" text="Buscar" />
+
+                                <ListView fx:id="listResultados" layoutX="180.0" layoutY="139.0" prefHeight="220.0" prefWidth="400.0" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+
+                <!-- Tab Listado -->
+                <Tab text="Listado">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="287.0" prefWidth="558.0">
+                            <children>
+
+                                <TableView fx:id="tablaSocios" layoutX="137.0" layoutY="73.0" prefHeight="270.0" prefWidth="515.0">
+                                    <columns>
+                                        <TableColumn fx:id="colNombre" prefWidth="182.0" text="Nombre" />
+                                        <TableColumn fx:id="colDireccion" minWidth="0.0" prefWidth="196.0" text="Direccion" />
+                                        <TableColumn fx:id="colTelefono" prefWidth="136.0" text="Telefono" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+
+            </tabs>
+        </TabPane>
+    </children>
 </AnchorPane>

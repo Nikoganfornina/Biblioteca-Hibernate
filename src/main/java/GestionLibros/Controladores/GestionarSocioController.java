@@ -36,7 +36,7 @@ public class GestionarSocioController {
 
     @FXML
     private void volver() throws Exception {
-        MainApp.switchScene("/org/example/bibliotecafx/hello-view.fxml");
+        MainApp.switchScene("/org/example/bibliotecahiberfx/Main-view.fxml");
     }
 
     // Guardar un nuevo socio
@@ -223,4 +223,5 @@ public class GestionarSocioController {
 
         actualizarListaSocios();
     }
+
 }

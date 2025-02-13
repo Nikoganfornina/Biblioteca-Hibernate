@@ -71,7 +71,7 @@ public class ISocioImpl implements ISocio {
     @Override
     public List<Socio> obtenerTodosLosSocios() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.createQuery("FROM Socios", Socio.class).list();
+            return session.createQuery("FROM Socio", Socio.class).list();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -80,7 +80,7 @@ public class ISocioImpl implements ISocio {
 
     public List<Socio> findByNombre(String nombre) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            String hql = "FROM Socios WHERE nombre LIKE :nombre";
+            String hql = "FROM Socio WHERE nombre LIKE :nombre";
             Query<Socio> query = session.createQuery(hql, Socio.class);
             query.setParameter("nombre", "%" + nombre + "%");
             return query.list();
@@ -93,7 +93,7 @@ public class ISocioImpl implements ISocio {
 
     public List<Socio> findByTelefono(int telefono) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            String hql = "FROM Socios WHERE telefono = :telefono";
+            String hql = "FROM Socio WHERE telefono = :telefono";
             Query<Socio> query = session.createQuery(hql, Socio.class);
             query.setParameter("telefono", telefono);  // Usamos el parámetro de tipo int
             return query.list();

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" styleClass="anchor-pane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GestionLibros.Controladores.GestionarPrestamosController">
+
+    <children>
+        <!-- Título -->
+        <Label fx:id="subtitulo" alignment="CENTER" layoutX="299.0" layoutY="14.0" prefHeight="55.0" prefWidth="301.0" text="GESTIÓN DE PRESTAMOS" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+
+        <!-- Botón Salir -->
+        <Button layoutX="750.0" layoutY="538.0" mnemonicParsing="false" onAction="#volver" prefHeight="40.0" prefWidth="114.0" styleClass="button1" text="VOLVER" />
+
+        <!-- TabPane -->
+        <TabPane layoutX="55.0" layoutY="77.0" prefHeight="446.0" prefWidth="789.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <!-- Tab Registrar Préstamo -->
+                <Tab text="Registrar Préstamo">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="342.0" prefWidth="667.0">
+                            <Label fx:id="lblMensaje" layoutX="263.0" layoutY="257.0" prefHeight="45.0" prefWidth="262.0" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: green; -fx-font-family: 'Segoe UI', sans-serif; -fx-padding: 10px;" text="" />
+                            <children>
+                                <Label layoutX="184.0" layoutY="50.0" text="Libros:" />
+                                <ComboBox fx:id="cmbLibro" layoutX="333.0" layoutY="50.0" prefWidth="200.0" />
+
+                                <Label layoutX="184.0" layoutY="100.0" text="Socios:" />
+                                <ComboBox fx:id="cmbSocio" layoutX="333.0" layoutY="100.0" prefWidth="200.0" />
+
+                                <Label layoutX="184.0" layoutY="150.0" text="Fecha de Préstamo:" />
+                                <DatePicker fx:id="dpFechaPrestamo" layoutX="333.0" layoutY="150.0" prefWidth="200.0" />
+
+                                <Label layoutX="184.0" layoutY="200.0" text="Fecha de Devolución:" />
+                                <DatePicker fx:id="dpFechaDevolucion" layoutX="333.0" layoutY="200.0" prefWidth="200.0" />
+
+                                <Button fx:id="btnRegistrarPrestamo" layoutX="333.0" layoutY="300.0" mnemonicParsing="false" onAction="#registrarPrestamo" prefHeight="64.0" prefWidth="124.0" text="Registrar" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+
+                <!-- Tab Libros Prestados Actualmente -->
+                <Tab text="Libros Prestados">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="342.0" prefWidth="667.0">
+                            <TableView fx:id="tablaLibrosPrestados" layoutX="20.0" layoutY="20.0" prefHeight="318.0" prefWidth="764.0">
+                                <columns>
+                                    <TableColumn fx:id="colLibro" prefWidth="170.0" text="Libro" />
+                                    <TableColumn fx:id="colSocio" prefWidth="177.0" text="Socio" />
+                                    <TableColumn fx:id="colFechaPrestamo" prefWidth="215.0" text="Fecha de Préstamo" />
+                                    <TableColumn fx:id="colFechaDevolucion" prefWidth="201.0" text="Fecha de Devolución" />
+                                </columns>
+                            </TableView>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+
+                <!-- Tab Historial de Préstamos de Socio -->
+                <Tab text="Historial de Préstamos">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="342.0" prefWidth="667.0">
+                            <Label layoutX="180.0" layoutY="20.0" text="Seleccione un Socio:" />
+                            <ComboBox fx:id="cmbSocioHistorial" layoutX="333.0" layoutY="20.0" prefWidth="200.0" />
+
+                            <TableView fx:id="tablaHistorial" layoutX="20.0" layoutY="60.0" prefHeight="250.0" prefWidth="600.0">
+                                <columns>
+                                    <TableColumn fx:id="colLibroHistorial" prefWidth="200.0" text="Libro" />
+                                    <TableColumn fx:id="colFechaPrestamoHistorial" prefWidth="200.0" text="Fecha de Préstamo" />
+                                    <TableColumn fx:id="colFechaDevolucionHistorial" prefWidth="200.0" text="Fecha de Devolución" />
+                                </columns>
+                            </TableView>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</AnchorPane>

@@ -30,8 +30,8 @@
         <Button onAction="#goToAutores" prefHeight="80" prefWidth="180" styleClass="button" text="Gestion Autores" />
     </HBox>
     <HBox alignment="CENTER" layoutX="256.0" layoutY="402.0" spacing="20">
-        <Button prefHeight="80" prefWidth="180" styleClass="button" text="Gestion Socios" />
-        <Button prefHeight="80" prefWidth="180" styleClass="button" text="Prestamos" />
+        <Button onAction="#goToSocios" prefHeight="80" prefWidth="180" styleClass="button" text="Gestion Socios" />
+        <Button onAction="#goToPrestamos" prefHeight="80" prefWidth="180" styleClass="button" text="Prestamos" />
     </HBox>
 
 </AnchorPane>

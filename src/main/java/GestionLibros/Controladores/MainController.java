@@ -26,19 +26,18 @@ public class MainController {
 
     @FXML
     private void goToSocios() throws Exception {
-        MainApp.switchScene("GestionSocios-view.fxml");
+        long inicio = System.nanoTime();
+        MainApp.switchScene("/org/example/bibliotecahiberfx/GestionSocios-view.fxml");
+        long tiempo = (System.nanoTime() - inicio) / 1_000_000;
+        System.out.println("\u001B[32mYendo a la gestión de libros... \u001B[36m" + tiempo + " ms\u001B[0m");
     }
 
     @FXML
     private void goToPrestamos() throws Exception {
-        MainApp.switchScene("Prestamos-view.fxml");
+        long inicio = System.nanoTime();
+        MainApp.switchScene("/org/example/bibliotecahiberfx/GestionPrestamos.fxml");
+        long tiempo = (System.nanoTime() - inicio) / 1_000_000;
+        System.out.println("\u001B[32mYendo a la gestión de libros... \u001B[36m" + tiempo + " ms\u001B[0m");
     }
-
-    @FXML
-    private void salir() {
-        System.exit(0);
-    }
-
-
 
 }

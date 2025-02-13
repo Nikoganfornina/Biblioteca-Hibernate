@@ -12,14 +12,14 @@ import java.util.List;
 public class IPrestamosImpl implements IPrestamos {
     public List<Libro> getAllLibros() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.createQuery("FROM Libros", Libro.class).list();
+            return session.createQuery("FROM Libro", Libro.class).list();
         }
     }
 
 
     public List<Socio> getAllSocios() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.createQuery("FROM Socios", Socio.class).list();
+            return session.createQuery("FROM Socio", Socio.class).list();
         }
     }
 
