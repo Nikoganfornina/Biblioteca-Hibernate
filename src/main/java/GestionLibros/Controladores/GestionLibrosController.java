@@ -1,4 +1,5 @@
 package GestionLibros.Controladores;
+
 import DAO.IAutorImpl;
 import DAO.IlibroImpl;
 import GestionLibros.MainApp;
@@ -9,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
 import java.util.List;
 
 public class GestionLibrosController {
@@ -22,14 +24,18 @@ public class GestionLibrosController {
     @FXML
     private TextField txtEditorial;
     @FXML
+
     private TextField txtFechaPublicacion;
+    @FXML
+    private ListView<Libro> listLibrosDisponibles; // Lista de libros para modificar
+    @FXML
+    private TableView<Libro> tablaLibrosmodificar, tablaLibrosEliminar;
+    @FXML
+    private TableColumn<Libro, String> colTituloTableviewmod, colAutorTableviewmod, colAutorEliminar, colTituloEliminar, colEditorialEliminar, colAnioEliminar, colISBNEliminar;
+
 
     @FXML
-    private ListView<Libro>  listLibrosDisponibles; // Lista de libros para modificar
-    @FXML
-    private TableView<Libro> tablaLibrosmodificar , tablaLibrosEliminar;
-    @FXML
-    private TableColumn<Libro, String> colTituloTableviewmod, colAutorTableviewmod , colAutorEliminar ,colTituloEliminar,colEditorialEliminar , colAnioEliminar , colISBNEliminar;
+    private TextField txtTituloMod, txtISBNMod, txtEditorialMod, txtFechaPublicacionMod;
 
     @FXML
     private void volver() throws Exception {
@@ -89,7 +95,7 @@ public class GestionLibrosController {
         ListaAutoresparaLibro.getSelectionModel().clearSelection();
         txtEditorial.clear();
         txtFechaPublicacion.clear();
-        Alert alert = new Alert( Alert.AlertType .INFORMATION , "El libro ha sido agregado con éxito" );
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "El libro ha sido agregado con éxito");
         ActualizarListas();
     }
 
@@ -110,6 +116,7 @@ public class GestionLibrosController {
 
     @FXML
     public void tablaLibrosMod() {
+
         // Limpiar columnas existentes para evitar duplicados
         tablaLibrosmodificar.getColumns().clear();
 
@@ -162,11 +169,69 @@ public class GestionLibrosController {
                     tablaLibrosEliminar.getItems().remove(libroSeleccionado);
                     tablaLibrosmodificar.getItems().remove(libroSeleccionado);
                     Alert eliminado = new Alert(Alert.AlertType.INFORMATION, "Libro eliminado con éxito");
-                    ActualizarListas();
+
                 }
             });
         } else {
             Alert error = new Alert(Alert.AlertType.INFORMATION, "Tienes que seleccionar un libro");
+        }
+    }
+
+
+    @FXML
+    public void seleccionarLibroModificar() {
+        Libro libroSeleccionado = tablaLibrosmodificar.getSelectionModel().getSelectedItem();
+        if (libroSeleccionado != null) {
+            txtTituloMod.setText(libroSeleccionado.getTitulo());
+            txtISBNMod.setText(libroSeleccionado.getIsbn());
+            txtEditorialMod.setText(libroSeleccionado.getEditorial());
+            txtFechaPublicacionMod.setText(String.valueOf(libroSeleccionado.getFechapublicacion()));
+        }
+    }
+
+
+
+    public void modificarLibro() {
+        // Obtenemos el valor de la fecha de publicación
+        String fechaPublicacion = txtFechaPublicacionMod.getText(); // Asegúrate de que esta variable esté correctamente referenciada
+
+        // Primero, comprobamos si el campo de texto es vacío o nulo
+        if (fechaPublicacion == null || fechaPublicacion.trim().isEmpty()) {
+            // Si está vacío, mostramos un mensaje de error
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Fecha de publicación no válida");
+            alert.setContentText("Por favor, ingresa una fecha válida.");
+            alert.showAndWait();
+            return; // Salimos del método para evitar continuar con la ejecución
+        }
+
+        // A continuación, asegurémonos de que el usuario está seguro de modificar el libro
+        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmAlert.setTitle("Confirmar");
+        confirmAlert.setHeaderText("¿Está seguro de que desea modificar el libro?");
+        confirmAlert.setContentText("Esta acción no se puede deshacer.");
+
+        // Esperamos la respuesta del usuario
+        if (confirmAlert.showAndWait().get() == ButtonType.OK) {
+            try {
+                // Aquí intentamos realizar la conversión de la fecha de publicación a un número (si es necesario)
+                int year = Integer.parseInt(fechaPublicacion); // Si esto falla, lanzará una excepción
+
+                // Si todo es correcto, continuamos con la modificación
+                // Aquí va el código para modificar el libro
+                System.out.println("Libro modificado correctamente");
+            } catch (NumberFormatException e) {
+                // Si la conversión falla, mostramos un error
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                errorAlert.setTitle("Error");
+                errorAlert.setHeaderText("Error al modificar el libro");
+                errorAlert.setContentText("La fecha de publicación no es válida. Asegúrate de ingresar un número.");
+                errorAlert.showAndWait();
+            }
+        } else {
+            // Si el usuario cancela la modificación, mostramos un mensaje
+            System.out.println("Modificación cancelada");
         }
     }
 
@@ -181,8 +246,10 @@ public class GestionLibrosController {
     @FXML
     public void initialize() {
         ActualizarListas();
+
     }
 }
+
 
 
 
