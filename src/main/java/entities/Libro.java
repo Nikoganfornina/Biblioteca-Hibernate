@@ -89,12 +89,7 @@ public class Libro implements Serializable {
 
     @Override
     public String toString() {
-        return  "Titulo='" + titulo + '\'' + ", Isbn='" + Isbn + '\'' +
-                ", Autor=" + autor + ", Editorial ='" + editorial + '\'' +  ", Fecha Publicacion=" + fechapublicacion +
-                '}';
+        return titulo + " // " + autor;
     }
 
-    public String toStringOnlyName() {
-        return "Libro : " + titulo + "Autor : " + autor;
-    }
 }

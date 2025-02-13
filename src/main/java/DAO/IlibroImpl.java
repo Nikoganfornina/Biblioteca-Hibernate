@@ -69,7 +69,12 @@ public class IlibroImpl implements Ilibro {
 
     @Override
     public Libro update(Libro libro) {
-        return null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.update(libro);
+        session.getTransaction().commit();
+        session.close();
+        return libro;
     }
 
     @Override

@@ -87,19 +87,16 @@
 /* Fondo de las filas del TableView transparente */
 .table-view .column-header-background {
     -fx-background-color: transparent; /* Fondo de los encabezados */
+     -fx-text-fill: white; /* Color del texto */
 }
 
 .table-view .table-row-cell {
     -fx-background-color: transparent;
     -fx-text-fill: white; /* Color del texto */
 }
-
-.table-view .virtual-flow .scroll-bar:horizontal {
-    -fx-opacity: 0;
-    -fx-padding: 0;
-    -fx-pref-height: 0;
-    -fx-min-height: 0;
-    -fx-max-height: 0;
+.table-view .table-column {
+    -fx-background-color: transparent;
+    -fx-text-fill: white; /* Color del texto */
 }
 .table-column {
     -fx-background-color: transparent; /* Hace las columnas transparentes */
@@ -107,7 +104,16 @@
 .radio-button {
     -fx-text-fill: white; /* Color del texto */
     -fx-font-size: 26px;
-
-
+}
+.tab {
+    -fx-font-size: 20px;
 }
 
+.list-view .list-cell:filled:selected {
+    -fx-background-color: #2F6F6F; /* Azul verdoso oscuro para los botones */
+    -fx-text-fill: white;
+}
+.table-view .table-row-cell:filled:selected {
+    -fx-background-color: #2F6F6F; /* Azul verdoso oscuro para los botones */
+    -fx-text-fill: white;
+}
