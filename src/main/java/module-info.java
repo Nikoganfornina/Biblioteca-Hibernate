@@ -7,6 +7,7 @@ module org.example.bibliotecafx {
         requires jakarta.persistence;
         requires java.naming;
     requires jdk.compiler;
+    requires protobuf.java;
 
     opens GestionLibros to javafx.fxml;
         opens entities to org.hibernate.orm.core;

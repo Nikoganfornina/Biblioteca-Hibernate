@@ -93,26 +93,18 @@
                     </content>
                 </Tab>
 
+                <!-- Tab Buscar -->
                 <Tab text="Buscar">
                     <content>
-                        <AnchorPane prefHeight="180.0" prefWidth="258.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="287.0" prefWidth="558.0">
                             <children>
-                                <fx:define>
-                                    <ToggleGroup fx:id="groupBuscar" />
-                                </fx:define>
-                                <HBox alignment="BASELINE_CENTER" layoutX="23.0" layoutY="23.0" prefHeight="55.0" prefWidth="740.0" spacing="10">
-                                    <Label prefHeight="54.0" prefWidth="175.0" text="Buscar por:" />
-                                    <RadioButton fx:id="checkTitulo" prefHeight="33.0" prefWidth="118.0" text="Título" />
-                                    <RadioButton fx:id="checkAutor" prefHeight="35.0" prefWidth="139.0" text="Autor" />
-                                    <RadioButton fx:id="checkISBN" prefHeight="38.0" prefWidth="157.0" text="ISBN" />
-                                </HBox>
 
-                                <Label layoutX="121.0" layoutY="99.0" text="Término:" />
-                                <TextField fx:id="txtBuscar" layoutX="240.0" layoutY="97.0" prefHeight="50.0" prefWidth="250.0" />
+                                <Label layoutX="238.0" layoutY="51.0" prefHeight="32.0" prefWidth="228.0" text="Título/Autor/ISBN" />
+                                <TextField fx:id="txtBuscar" layoutX="242.0" layoutY="99.0" prefWidth="220.0" />
 
-                                <Button fx:id="btnBuscar" layoutX="521.0" layoutY="95.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="148.0" text="Buscar" />
+                                <Button fx:id="btnBuscar" layoutX="512.0" layoutY="83.0" mnemonicParsing="false" onAction="#buscarLibro" text="Buscar" />
 
-                                <ListView fx:id="listResultados" layoutX="155.0" layoutY="165.0" prefHeight="224.0" prefWidth="450.0" />
+                                <ListView fx:id="listResultados" layoutX="67.0" layoutY="139.0" prefHeight="220.0" prefWidth="686.0" />
                             </children>
                         </AnchorPane>
                     </content>

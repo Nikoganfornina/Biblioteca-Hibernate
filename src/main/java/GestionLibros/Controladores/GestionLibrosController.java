@@ -3,6 +3,7 @@ package GestionLibros.Controladores;
 import DAO.IAutorImpl;
 import DAO.IlibroImpl;
 import GestionLibros.MainApp;
+import com.google.protobuf.TextFormatParseInfoTree;
 import entities.Autor;
 import entities.Libro;
 import javafx.beans.property.SimpleStringProperty;
@@ -15,6 +16,9 @@ import java.util.List;
 
 public class GestionLibrosController {
 
+    public TextField txtBuscar;
+    public ListView listResultados;
+    public Button btnBuscar;
     @FXML
     private ListView<Autor> ListaAutoresparaLibro;
     @FXML
@@ -46,6 +50,44 @@ public class GestionLibrosController {
     }
 
     @FXML
+    private void buscarLibro() {
+        String query = txtBuscar.getText();
+        if (!query.isEmpty()) {
+            List<Libro> resultados = null;
+
+            // Intentamos la búsqueda por ISBN
+            try {
+                Integer isbn = Integer.parseInt(query);
+                resultados = new IlibroImpl().findByISBN(isbn);  // Buscar por ISBN
+            } catch (NumberFormatException e) {
+                // Si no es un ISBN válido, se maneja la excepción y continuamos con las siguientes búsquedas
+            }
+
+            if (resultados == null || resultados.isEmpty()) {
+                // Si no se encuentra por ISBN, buscamos por título
+                resultados = new IlibroImpl().findByTitulo(query);
+                if (resultados == null || resultados.isEmpty()) {
+                    // Si no se encuentra por título, buscamos por autor
+                    // Suponiendo que el autor es un nombre de texto
+                    resultados = new IlibroImpl().findByAutor(query);
+                }
+            }
+
+            if (resultados != null && !resultados.isEmpty()) {
+                ObservableList<Libro> observableResultados = FXCollections.observableArrayList(resultados);
+                listResultados.setItems(observableResultados);
+            } else {
+                System.out.println("No se encontraron resultados.");
+            }
+        } else {
+            // Si el campo de búsqueda está vacío, mostramos todos los libros disponibles
+            List<Libro> librosDisponibles = new IlibroImpl().findAll();
+            ObservableList<Libro> observableLibros = FXCollections.observableArrayList(librosDisponibles);
+            listResultados.setItems(observableLibros);
+        }
+    }
+
+
     public void guardarLibro() {
         String titulo = txtTitulo.getText();
         String isbn = txtISBN.getText();

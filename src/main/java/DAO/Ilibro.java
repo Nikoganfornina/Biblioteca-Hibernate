@@ -13,6 +13,8 @@ public interface Ilibro {
 
     List<Libro> findByAutor(Integer autor);
 
+    List<Libro> findByAutor(String autor);
+
     List<Libro> findByISBN(Integer isbn);
 
     Libro save(Libro libro);

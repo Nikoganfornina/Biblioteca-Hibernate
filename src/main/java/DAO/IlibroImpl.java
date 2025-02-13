@@ -1,7 +1,6 @@
 package DAO;
 
 import Util.HibernateUtil;
-import entities.Autor;
 import entities.Libro;
 import org.hibernate.Session;
 
@@ -23,40 +22,40 @@ public class IlibroImpl implements Ilibro {
 
         return libros;
     }
-
     @Override
     public List<Libro> findByTitulo(String titulo) {
-
         Session session = HibernateUtil.getSessionFactory().openSession();
-        List<Libro> libros = session.createQuery( "from Libro where titulo like :titulo" , Libro.class)
-                .setParameter("titulo", "%"+ titulo + "%")
+        List<Libro> libros = session.createQuery("from Libro where titulo like :titulo", Libro.class)
+                .setParameter("titulo", "%" + titulo + "%")
                 .list();
         session.close();
         return libros;
     }
 
     @Override
-    public List<Libro> findByAutor(Integer Id_Autor) {
+    public List<Libro> findByAutor(Integer autor) {
+        return List.of();
+    }
+
+    @Override
+    public List<Libro> findByAutor(String autor) {  // Cambié el parámetro para recibir un texto de autor
         Session session = HibernateUtil.getSessionFactory().openSession();
-        List<Libro> Autores = session.createQuery( "from Libro where Id_Autor like :titulo " , Libro.class)
-                .setParameter("Id_Autor", "%"+ Id_Autor + "%")
+        List<Libro> libros = session.createQuery("from Libro where autor.nombre like :autor", Libro.class)  // Suponiendo que "autor.nombre" es el campo del autor en la clase Libro
+                .setParameter("autor", "%" + autor + "%")
                 .list();
         session.close();
-        return Autores;
+        return libros;
     }
 
     @Override
     public List<Libro> findByISBN(Integer isbn) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        List<Libro> ISBN = session.createQuery( "from Libro where Id_Autor like :titulo " , Libro.class)
-                .setParameter("Id_Autor", "%"+ isbn + "%")
+        List<Libro> libros = session.createQuery("from Libro where isbn = :isbn", Libro.class)
+                .setParameter("isbn", isbn)
                 .list();
         session.close();
-        return ISBN;
-
-
+        return libros;
     }
-
     @Override
     public Libro save(Libro libro) {
         Session session = HibernateUtil.getSessionFactory().openSession();
