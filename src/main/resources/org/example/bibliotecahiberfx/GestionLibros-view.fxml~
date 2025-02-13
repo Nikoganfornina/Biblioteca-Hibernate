@@ -49,7 +49,7 @@
                             <children>
 
 
-                                <TableView fx:id="tablalibrosmod" layoutX="24.0" layoutY="43.0" prefHeight="270.0" prefWidth="292.0" styleClass="table-view">
+                                <TableView fx:id="tablaAutores" layoutX="24.0" layoutY="43.0" prefHeight="270.0" prefWidth="292.0" styleClass="table-view">
 
                                     <columns>
                                         <TableColumn fx:id="colTituloTableviewmod" prefWidth="150.0" text="Título" />

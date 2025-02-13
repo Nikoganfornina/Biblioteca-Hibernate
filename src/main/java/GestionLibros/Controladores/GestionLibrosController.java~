@@ -59,6 +59,8 @@ public class GestionLibrosController {
     @FXML
     private TableColumn<Libro, String> colAutorTableviewmod;
 
+    private ObservableList<Libro> listaLibrosObservable = FXCollections.observableArrayList();
+
     @FXML
     private void volver() throws Exception {
         long inicio = System.nanoTime();
@@ -99,6 +101,7 @@ public class GestionLibrosController {
         colAnio.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getFechapublicacion()).asObject());
         colISBN.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIsbn()));
 
+        tablaLibrosEliminar.setItems(listaLibrosObservable);
         actualizarListaLibros();
     }
 
@@ -154,6 +157,7 @@ public class GestionLibrosController {
                 if (response == ButtonType.YES) {
                     IlibroImpl libroDao = new IlibroImpl();
                     libroDao.delete(libroSeleccionado);
+                    listaLibrosObservable.remove(libroSeleccionado);
                     mostrarAlerta("Información", "Libro eliminado con éxito", Alert.AlertType.INFORMATION);
                 }
             });

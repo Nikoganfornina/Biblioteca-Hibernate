@@ -104,5 +104,10 @@
 .table-column {
     -fx-background-color: transparent; /* Hace las columnas transparentes */
 }
+.radio-button {
+    -fx-text-fill: white; /* Color del texto */
+    -fx-font-size: 26px;
 
+
+}
 

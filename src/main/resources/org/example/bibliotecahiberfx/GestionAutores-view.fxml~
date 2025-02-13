@@ -6,7 +6,7 @@
 <AnchorPane prefHeight="600.0" prefWidth="900.0" styleClass="anchor-pane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GestionLibros.Controladores.GestionAutoresController">
     <children>
         <!-- Título -->
-        <Label  layoutX="98.0" layoutY="22.0" prefHeight="72.0" prefWidth="704.0" styleClass="titulo" text="GESTIÓN DE AUTORES" />
+        <Label fx:id="subtitulo" layoutX="98.0" layoutY="22.0" prefHeight="72.0" prefWidth="704.0" styleClass="titulo" text="GESTIÓN DE AUTORES" />
 
         <!-- TabPane para los tabs -->
         <TabPane layoutX="42.0" layoutY="94.0" prefHeight="464.0" prefWidth="816.0" styleClass="tab-pane" tabClosingPolicy="UNAVAILABLE">
